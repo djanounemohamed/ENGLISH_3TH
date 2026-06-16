@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>📘 English Unit: Pages 14–20 | Match · Robotten · Colours · Story & Games</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(145deg, #fef7e8 0%, #f5ebd6 100%);
+            font-family: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI Emoji', cursive, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .main-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #fffef7;
+            border-radius: 70px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.12);
+            padding: 20px 28px 35px;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 5px dotted #ffb347;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2rem;
+            margin: 0;
+            background: linear-gradient(135deg, #4a7c59, #2c5e3f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 10px 0 5px;
+        }
+        .badge {
+            background: #ffddb0;
+            padding: 5px 18px;
+            border-radius: 60px;
+            font-weight: bold;
+            color: #aa5c1c;
+            font-size: 0.75rem;
+        }
+        .grid-2col {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 25px 0;
+        }
+        .card {
+            flex: 1;
+            min-width: 300px;
+            background: #fffaf2;
+            border-radius: 55px;
+            padding: 18px 20px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            border: 2px solid #ffe0b5;
+        }
+        .card-title {
+            background: #ffcf95;
+            display: inline-block;
+            padding: 6px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+        }
+        button, .match-card, .color-chip, .num-card, .tick-word {
+            cursor: pointer;
+            transition: 0.05s linear;
+            font-family: inherit;
+        }
+        .listen-btn {
+            background: #ffe3b9;
+            border: none;
+            border-radius: 40px;
+            padding: 6px 16px;
+            font-weight: bold;
+            margin: 5px;
+            box-shadow: 0 3px 0 #c28a4a;
+        }
+        .listen-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #c28a4a; }
+        
+        /* match game */
+        .match-area { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0; }
+        .match-column { flex: 1; min-width: 160px; background: #fff5e9; border-radius: 50px; padding: 12px; }
+        .match-card {
+            background: white; border-radius: 50px; padding: 10px; margin: 10px 0; text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05); border: 2px solid #ffd6a5; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .match-card.selected { background: #ffe0b5; border: 3px solid #ffa559; }
+        .match-card.matched { background: #c8e6c1; opacity: 0.7; text-decoration: line-through; pointer-events: none; }
+        
+        /* robotten */
+        .robotten-card { background: #eaf5ff; border-radius: 60px; padding: 15px; text-align: center; margin: 15px 0; }
+        .avatar { font-size: 3.5rem; }
+        
+        /* r-words */
+        .r-words-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 15px 0; }
+        .tick-word { background: #fff0e0; border-radius: 50px; padding: 8px 15px; display: flex; align-items: center; gap: 12px; font-weight: bold; }
+        .tick-box-small { width: 28px; height: 28px; background: white; border: 3px solid #ffb058; border-radius: 15px; display: inline-flex; align-items: center; justify-content: center; }
+        .tick-word.ticked .tick-box-small { background: #a5d6a5; border-color: #2e7d32; }
+        
+        /* colours */
+        .color-palette { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 15px 0; }
+        .color-chip { width: 55px; height: 55px; border-radius: 60px; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .color-item { text-align: center; width: 70px; }
+        .picture-card { background: #fff3e0; border-radius: 40px; padding: 12px; text-align: center; margin-top: 12px; cursor: pointer; }
+        
+        /* numbers & story */
+        .number-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 15px 0; }
+        .num-card { background: #ffefdb; width: 60px; padding: 10px 0; text-align: center; border-radius: 50px; font-size: 1.5rem; font-weight: bold; box-shadow: 0 4px 0 #bda27e; }
+        .feedback-area { background: #ffefdb; border-radius: 60px; padding: 12px 20px; margin-top: 25px; display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; }
+        .reset-btn { background: #ffa559; border: none; padding: 8px 25px; border-radius: 40px; color: white; font-weight: bold; cursor: pointer; }
+        footer { text-align: center; font-size: 0.7rem; color: #a57c52; margin-top: 20px; }
+        @media (max-width: 750px) { .num-card { width: 50px; } .match-card { font-size: 0.8rem; } }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="main-wrapper">
+    <div class="header">
+        <h1>📘 Pages 14 → 20 · Match · Robotten · Colours & Stories</h1>
+        <div class="badge-row">
+            <span class="badge">🎯 17. Listen & match</span>
+            <span class="badge">🤖 18. Robotten & introduce yourself</span>
+            <span class="badge">🔊 p.15 'r' words</span>
+            <span class="badge">🎨 p.19-20 colours & friends</span>
+        </div>
+    </div>
+
+    <div class="grid-2col">
+        <!-- LEFT COLUMN: pages 14-15 -->
+        <div class="card">
+            <div class="card-title">🖇️ 17. Listen & match (copybook)</div>
+            <div id="matchGameArea">
+                <p style="font-size:0.8rem;">🔊 Click a word, then click its picture/match.</p>
+                <div class="match-area" id="matchContainer"></div>
+                <div id="matchFeedback" style="text-align:center; background:#fff0db; border-radius:40px; padding:6px;">✨ Match all pairs!</div>
+            </div>
+            
+            <div class="card-title" style="margin-top: 20px;">🤖 18. Listen, read & do same</div>
+            <div class="robotten-card">
+                <div class="avatar">🤖✨</div>
+                <div id="robottenText"><strong>Hello, I'm Robotten.</strong> I'm ten. I live in Algiers. I speak Arabic, English and French.</div>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 12px 0;">
+                    <button id="listenRobottenBtn" class="listen-btn">🔊 Listen to Robotten</button>
+                    <button id="repeatRobottenBtn" class="listen-btn">🗣️ Repeat after Robotten</button>
+                    <button id="introduceYourselfBtn" class="listen-btn">🧑‍🎤 Introduce yourself</button>
+                </div>
+                <div id="robottenFeedback" style="font-size:0.8rem; background:#e2f0e8; border-radius:30px; padding:6px;">💬 Listen, then do the same with a friend!</div>
+            </div>
+
+            <div class="card-title" style="margin-top: 20px;">🔊 p.15 · Listen & tick 'r' words</div>
+            <div class="r-words-grid" id="rWordsGrid"></div>
+            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+                <button id="playRandomRWord" class="listen-btn">🎲 Listen & tick 'r' word</button>
+                <button id="repeatLastRWord" class="listen-btn">🔁 Repeat last word</button>
+            </div>
+            <div id="rWordFeedback" style="background:#fff0db; border-radius:40px; padding:8px; margin-top:10px; text-align:center;">👂 Hear the word? Tick the box if it has an 'r' sound!</div>
+        </div>
+
+        <!-- RIGHT COLUMN: pages 19-20 (colours + story & games) -->
+        <div class="card">
+            <div class="card-title">🎨 p.19 · Colours & number the colours</div>
+            <div id="coloursArea">
+                <div class="color-palette" id="colorPalette"></div>
+                <div><button id="speakColourBtn" class="listen-btn">🎨 Listen to colour name</button> <button id="randomColourGame" class="listen-btn">🎲 Guess colour game</button></div>
+                <div id="colourFeedback" style="font-size:0.8rem; margin-top:8px;">💡 Click a colour to hear its name. Then draw & colour in copybook!</div>
+                <div class="picture-card" id="interactivePic">
+                    🖍️ Click to "colour" this picture (like copybook) 
+                    <div style="height: 40px; width: 100%; background: #ddd; border-radius: 40px; margin-top: 8px;" id="colourableSample"></div>
+                </div>
+            </div>
+
+            <div class="card-title" style="margin-top: 20px;">👥 p.20 · Ask & answer about colours</div>
+            <div style="text-align: center; background:#fef2e0; border-radius: 50px; padding: 12px;">
+                <div id="qaColourBubble">💬 "What's your favourite colour?"</div>
+                <div style="display: flex; gap: 10px; justify-content: center; margin: 12px 0;">
+                    <button id="askColourBtn" class="listen-btn">🎤 Ask question</button>
+                    <button id="answerColourBtn" class="listen-btn">🎤 Answer (blue)</button>
+                </div>
+                <input type="text" id="favColourInput" placeholder="e.g., green" style="border-radius:60px; border:2px solid #ffcd94; padding:6px 12px;">
+                <button id="speakMyColourBtn" class="listen-btn">🗣️ Speak my answer</button>
+                <div id="qaColourFeedback" style="font-size:0.8rem; margin-top:8px;">✨ Ask a friend and answer!</div>
+            </div>
+
+            <div class="card-title" style="margin-top: 20px;">🎵 p.20 · Sing the song & story (p.21 recap)</div>
+            <div style="background:#f7efe2; border-radius: 50px; padding: 12px; text-align:center;">
+                <button id="singSongBtn" class="listen-btn">🎵 Listen to colour song</button>
+                <button id="story21Btn" class="listen-btn">📖 Mini story (pen, book)</button>
+                <div id="extraMessage" style="margin-top: 8px;">🌈 "Colour the rainbow, red and blue..."</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feedback-area">
+        <span>⭐ Pages 14-20: Matching, Robotten, 'r' words, colours, Q&A, song ⭐</span>
+        <button id="globalResetBtn" class="reset-btn">🔄 Reset Everything</button>
+    </div>
+    <footer>📘 Based on activities 17-18 (p14-15) + colours p19-20 + listen & match, tick 'r', ask & answer.</footer>
+</div>
+
+<script>
+    // ========== SPEECH ==========
+    function speakText(text, rate = 0.85) {
+        if (!window.speechSynthesis) return;
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = rate;
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // ---------- 1. MATCH GAME (p.14 act.17) ----------
+    const matchPairs = [
+        { word: "rabbit", match: "🐇 rabbit", audio: "rabbit" },
+        { word: "robot", match: "🤖 robot", audio: "robot" },
+        { word: "red", match: "🔴 red colour", audio: "red" },
+        { word: "rainbow", match: "🌈 rainbow", audio: "rainbow" },
+        { word: "run", match: "🏃 run", audio: "run" }
+    ];
+    let matchedLeft = new Array(matchPairs.length).fill(false);
+    let matchedRight = new Array(matchPairs.length).fill(false);
+    let selectedSide = null, selectedIdx = null;
+
+    function renderMatch() {
+        const container = document.getElementById('matchContainer');
+        container.innerHTML = '';
+        const leftCol = document.createElement('div'); leftCol.className = 'match-column';
+        leftCol.innerHTML = '<div style="text-align:center; font-weight:bold;">📖 Words</div>';
+        matchPairs.forEach((p, idx) => {
+            const card = document.createElement('div'); card.className = 'match-card';
+            if (matchedLeft[idx]) card.classList.add('matched');
+            card.innerHTML = `🔊 ${p.word} <span style="font-size:0.7rem; margin-left:6px; cursor:pointer;" class="listen-word" data-word="${p.word}">🎧</span>`;
+            card.dataset.index = idx; card.dataset.side = 'left';
+            card.addEventListener('click', (e) => { if(e.target.classList.contains('listen-word')) return; if(!matchedLeft[idx]) handleMatch('left', idx); });
+            leftCol.appendChild(card);
+        });
+        const rightCol = document.createElement('div'); rightCol.className = 'match-column';
+        rightCol.innerHTML = '<div style="text-align:center; font-weight:bold;">🎯 Match</div>';
+        matchPairs.forEach((p, idx) => {
+            const card = document.createElement('div'); card.className = 'match-card';
+            if (matchedRight[idx]) card.classList.add('matched');
+            card.innerHTML = p.match;
+            card.dataset.index = idx; card.dataset.side = 'right';
+            card.addEventListener('click', () => { if(!matchedRight[idx]) handleMatch('right', idx); });
+            rightCol.appendChild(card);
+        });
+        container.appendChild(leftCol); container.appendChild(rightCol);
+        // attach listen icons
+        document.querySelectorAll('.listen-word').forEach(el => {
+            el.addEventListener('click', (e) => { e.stopPropagation(); speakText(el.dataset.word, 0.85); });
+        });
+    }
+    function handleMatch(side, idx) {
+        const feedback = document.getElementById('matchFeedback');
+        if (selectedSide === null) {
+            selectedSide = side; selectedIdx = idx;
+            highlightCard(side, idx, true);
+            feedback.innerHTML = `👉 Selected "${side === 'left' ? matchPairs[idx].word : matchPairs[idx].match}". Now click match on other side.`;
+            return;
+        }
+        if (selectedSide === side) { clearHighlight(); selectedSide = null; feedback.innerHTML = `🔄 Same side. Reset selection.`; return; }
+        const leftIdx = selectedSide === 'left' ? selectedIdx : idx;
+        const rightIdx = selectedSide === 'right' ? selectedIdx : idx;
+        if (leftIdx === rightIdx && !matchedLeft[leftIdx] && !matchedRight[rightIdx]) {
+            matchedLeft[leftIdx] = true; matchedRight[rightIdx] = true;
+            feedback.innerHTML = `✅ Correct match! ${matchPairs[leftIdx].word} ↔ ${matchPairs[leftIdx].match}`;
+            speakText(`Great match! ${matchPairs[leftIdx].word}`, 0.85);
+            clearHighlight(); renderMatch();
+            if (matchedLeft.every(v => v)) feedback.innerHTML = `🏆 Perfect! All matched! 🏆`;
+        } else { feedback.innerHTML = `❌ Wrong match. Try again!`; speakText(`Not correct. Try again.`, 0.8); clearHighlight(); }
+        selectedSide = null; selectedIdx = null;
+    }
+    function highlightCard(side, idx, highlight) {
+        document.querySelectorAll('.match-card').forEach(card => {
+            if (card.dataset.side === side && parseInt(card.dataset.index) === idx) {
+                if (highlight) card.classList.add('selected'); else card.classList.remove('selected');
+            }
+        });
+    }
+    function clearHighlight() { document.querySelectorAll('.match-card').forEach(c => c.classList.remove('selected')); }
+    function resetMatch() { matchedLeft.fill(false); matchedRight.fill(false); selectedSide = null; renderMatch(); document.getElementById('matchFeedback').innerHTML = "✨ Game reset! Listen and match."; }
+
+    // ---------- 2. ROBOTTEN (p.14) ----------
+    const robottenText = "Hello, I'm Robotten. I'm ten. I live in Algiers. I speak Arabic, English and French.";
+    document.getElementById('listenRobottenBtn').onclick = () => { speakText(robottenText, 0.85); document.getElementById('robottenFeedback').innerHTML = "🔊 Robotten speaking. Now repeat!"; };
+    document.getElementById('repeatRobottenBtn').onclick = () => { speakText(`Now you say: ${robottenText}`, 0.85); };
+    document.getElementById('introduceYourselfBtn').onclick = () => {
+        let name = prompt("What's your name?", "Sam") || "friend";
+        let age = prompt("How old are you?", "9") || "nine";
+        let city = prompt("Where do you live?", "Algiers") || "my city";
+        let langs = prompt("Which languages do you speak?", "Arabic, English") || "Arabic and English";
+        let intro = `Hello, I'm ${name}. I'm ${age}. I live in ${city}. I speak ${langs}.`;
+        speakText(intro, 0.9);
+        document.getElementById('robottenFeedback').innerHTML = `🎤 You: "${intro}" — Great! Now do same with a friend.`;
+    };
+
+    // ---------- 3. 'r' words activity (p.15) ----------
+    const rActivityWords = [
+        { text: "🐰 rabbit", hasR: true, ticked: false },
+        { text: "🤖 robot", hasR: true, ticked: false },
+        { text: "🔴 red", hasR: true, ticked: false },
+        { text: "🌈 rainbow", hasR: true, ticked: false },
+        { text: "🏃 run", hasR: true, ticked: false },
+        { text: "⚽ ball", hasR: false, ticked: false },
+        { text: "🐱 cat", hasR: false, ticked: false }
+    ];
+    let lastRWord = null;
+    function renderRGrid() {
+        const grid = document.getElementById('rWordsGrid');
+        grid.innerHTML = '';
+        rActivityWords.forEach((item, idx) => {
+            const div = document.createElement('div'); div.className = 'tick-word';
+            if (item.ticked) div.classList.add('ticked');
+            div.innerHTML = `<div class="tick-box-small" data-idx="${idx}">${item.ticked ? '✓' : '☐'}</div><span>${item.text}</span>`;
+            div.querySelector('.tick-box-small').addEventListener('click', (e) => {
+                e.stopPropagation();
+                item.ticked = !item.ticked;
+                renderRGrid();
+                document.getElementById('rWordFeedback').innerHTML = item.ticked ? `✅ Ticked "${item.text}"` : `❌ Unticked "${item.text}"`;
+                if (item.hasR) speakText(`You ticked ${item.text} because it has R sound.`, 0.8);
+                else speakText(`This word does not have the R sound.`, 0.8);
+            });
+            grid.appendChild(div);
+        });
+    }
+    function randomRChallenge() {
+        const rand = rActivityWords[Math.floor(Math.random() * rActivityWords.length)];
+        lastRWord = rand;
+        speakText(rand.text.replace(/[^a-z]/gi, ' ').trim(), 0.85);
+        document.getElementById('rWordFeedback').innerHTML = `🔊 Heard: "${rand.text}". ${rand.hasR ? 'It HAS an R sound → tick its box!' : 'No R sound → do NOT tick.'}`;
+    }
+    document.getElementById('playRandomRWord').onclick = randomRChallenge;
+    document.getElementById('repeatLastRWord').onclick = () => { if(lastRWord) speakText(lastRWord.text.replace(/[^a-z]/gi,' ').trim(),0.85); else document.getElementById('rWordFeedback').innerHTML='👉 Press "Listen & tick" first.'; };
+    
+    // ---------- 4. COLOURS (p.19) & number the colours ----------
+    const coloursList = [
+        { name: "red", code: "#FFB3BA", emoji: "🔴" },
+        { name: "blue", code: "#BAE1FF", emoji: "🔵" },
+        { name: "yellow", code: "#FFFFBA", emoji: "🟡" },
+        { name: "green", code: "#BAFFC9", emoji: "🟢" },
+        { name: "orange", code: "#FFD8B1", emoji: "🟠" },
+        { name: "purple", code: "#E0BBE4", emoji: "🟣" }
+    ];
+    function renderColours() {
+        const palette = document.getElementById('colorPalette');
+        palette.innerHTML = '';
+        coloursList.forEach((col, idx) => {
+            const div = document.createElement('div'); div.className = 'color-item';
+            const chip = document.createElement('div'); chip.className = 'color-chip'; chip.style.backgroundColor = col.code;
+            chip.addEventListener('click', () => { speakText(col.name, 0.85); document.getElementById('colourFeedback').innerHTML = `🎨 ${col.name} — now number it in your copybook (activity 4 p.19).`; });
+            const label = document.createElement('div'); label.innerText = `${col.emoji} ${col.name}`; label.style.fontSize='0.7rem';
+            div.appendChild(chip); div.appendChild(label);
+            palette.appendChild(div);
+        });
+    }
+    let currentColourGame = null;
+    document.getElementById('speakColourBtn').onclick = () => { const randC = coloursList[Math.floor(Math.random()*coloursList.length)]; speakText(randC.name,0.85); document.getElementById('colourFeedback').innerHTML = `🎨 Listen: "${randC.name}". Can you point to it?`; };
+    document.getElementById('randomColourGame').onclick = () => { const randC = coloursList[Math.floor(Math.random()*coloursList.length)]; currentColourGame = randC.name; speakText(`Which colour is this? ${randC.name}`,0.85); document.getElementById('colourFeedback').innerHTML = `🔍 Guess the colour! Then click on the ${randC.name} chip.`; };
+    document.getElementById('interactivePic').addEventListener('click', () => { const sample = document.getElementById('colourableSample'); const randPastel = coloursList[Math.floor(Math.random()*coloursList.length)].code; sample.style.backgroundColor = randPastel; speakText(`You coloured the picture!`,0.8); });
+    
+    // ---------- 5. Ask & answer (p.20) ----------
+    document.getElementById('askColourBtn').onclick = () => { speakText("What's your favourite colour?",0.85); document.getElementById('qaColourBubble').innerHTML = `❓ "What's your favourite colour?" – Now answer!`; };
+    document.getElementById('answerColourBtn').onclick = () => { speakText("My favourite colour is blue.",0.85); document.getElementById('qaColourBubble').innerHTML = `💬 "My favourite colour is blue."`; };
+    document.getElementById('speakMyColourBtn').onclick = () => { let ans = document.getElementById('favColourInput').value.trim(); if(!ans) ans='green'; speakText(`My favourite colour is ${ans}.`,0.85); document.getElementById('qaColourBubble').innerHTML = `💬 "My favourite colour is ${ans}."`; };
+    
+    // ---------- 6. Song + mini story (p.20) ----------
+    document.getElementById('singSongBtn').onclick = () => { speakText("Red and yellow, green and blue. Colours bright for me and you! Rainbow shining in the sky, Colourful friends, wave hi hi!",0.85); document.getElementById('extraMessage').innerHTML = "🎶 Colour song played! Sing with your friends."; };
+    document.getElementById('story21Btn').onclick = () => { speakText("The pen is green. The book is on the table. Where is the eraser? Under the chair!",0.85); document.getElementById('extraMessage').innerHTML = "📖 Mini story: pen, book, eraser. Listen and repeat."; };
+    
+    // ---------- GLOBAL RESET ----------
+    function globalReset() {
+        window.speechSynthesis.cancel();
+        resetMatch();
+        renderRGrid();
+        document.getElementById('robottenFeedback').innerHTML = "💬 Click 'Listen', then read aloud. Then do the same with a friend!";
+        document.getElementById('rWordFeedback').innerHTML = "👂 Hear the word? Tick the box if it has an 'r' sound!";
+        document.getElementById('colourFeedback').innerHTML = "💡 Click a colour to hear its name.";
+        document.getElementById('qaColourBubble').innerHTML = `💬 "What's your favourite colour?"`;
+        document.getElementById('favColourInput').value = "";
+        document.getElementById('extraMessage').innerHTML = "🌈 Colour the rainbow, red and blue...";
+        document.getElementById('colourableSample').style.backgroundColor = "#ddd";
+        lastRWord = null;
+        speakText("All activities reset. Pages 14 to 20 ready!", 0.85);
+    }
+    document.getElementById('globalResetBtn').addEventListener('click', globalReset);
+    
+    // initial renders
+    renderMatch();
+    renderColours();
+    renderRGrid();
+    
+    // additional number activity from earlier pages but integrated: bonus - listen and show numbers p.11-like
+    // just for fun, add small number panel (p.13 style) inside colours? Not necessary but nice.
+    const extraNumberDiv = document.createElement('div');
+    extraNumberDiv.style.marginTop = "20px";
+    extraNumberDiv.innerHTML = `<div class="card-title" style="margin-top:5px;">🔢 Bonus: Listen & say number (p.13 style)</div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center;"><button id="numSpeakerBonus" class="listen-btn">🎲 Say a number</button><div id="numBonusFeedback" style="font-size:0.7rem;"></div></div>
+        <div class="number-grid" id="bonusNumberGrid"></div>`;
+    document.querySelector('.card:first-child').appendChild(extraNumberDiv);
+    for (let i=1;i<=10;i++) {
+        let numDiv = document.createElement('div'); numDiv.className = 'num-card'; numDiv.textContent = i;
+        numDiv.addEventListener('click', () => { speakText(`Number ${i}`,0.85); });
+        document.getElementById('bonusNumberGrid').appendChild(numDiv);
+    }
+    let bonusCurrent = null;
+    document.getElementById('numSpeakerBonus').onclick = () => { let r = Math.floor(Math.random()*10)+1; bonusCurrent=r; speakText(`Number ${r}. Show me ${r}!`,0.85); document.getElementById('numBonusFeedback').innerHTML = `🔊 Click the number ${r} on the grid.`; };
+    // improve bonus feedback
+    document.querySelectorAll('#bonusNumberGrid .num-card').forEach(btn => {
+        btn.addEventListener('click', function() { if(bonusCurrent && parseInt(btn.textContent)===bonusCurrent) { document.getElementById('numBonusFeedback').innerHTML = `✅ Great! You showed ${bonusCurrent}.`; speakText(`Excellent!`,0.85); bonusCurrent=null; } else if(bonusCurrent) { document.getElementById('numBonusFeedback').innerHTML = `❌ That's not ${bonusCurrent}. Try again.`; } });
+    });
+    
+    window.addEventListener('load', () => { speakText("Welcome to pages 14 to 20! Match, talk with Robotten, learn colours, and practice with friends.",0.9); });
+</script>
+</body>
+</html>

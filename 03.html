@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>🗣️ Page 7 | Listen & Show | Repeat Challenge</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            background: linear-gradient(145deg, #c8e8ff 0%, #b0d4f0 100%);
+            font-family: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI Emoji', cursive, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* main game panel */
+        .game-panel {
+            max-width: 1100px;
+            width: 100%;
+            background: #fffef5;
+            border-radius: 85px 85px 75px 75px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2), inset 0 1px 4px rgba(255, 255, 220, 0.9);
+            overflow: hidden;
+            padding: 20px 28px 35px;
+            transition: all 0.2s;
+        }
+
+        .page-header {
+            text-align: center;
+            border-bottom: 5px dotted #ffb347;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            margin: 0;
+            background: linear-gradient(135deg, #3b8cbf, #1e5a7a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .badge-page7 {
+            background: #ffddb0;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 60px;
+            font-weight: bold;
+            color: #aa5c1c;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            box-shadow: inset 0 0 0 1px #ffe1b0;
+        }
+
+        .instruction {
+            background: #eef4fc;
+            border-radius: 50px;
+            padding: 12px 18px;
+            margin: 15px 0 20px;
+            text-align: center;
+            font-weight: bold;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1rem;
+            align-items: center;
+        }
+
+        .instruction-icon {
+            font-size: 1.6rem;
+        }
+
+        /* two activities layout */
+        .activities-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 20px 0;
+        }
+
+        .activity-card {
+            flex: 1;
+            min-width: 260px;
+            background: #fef6e8;
+            border-radius: 60px;
+            padding: 20px 15px;
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.1s ease;
+            border: 2px solid #ffdaa5;
+        }
+
+        .activity-title {
+            background: #ffcf95;
+            display: inline-block;
+            padding: 6px 25px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* listen & show area */
+        .show-options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .greeting-card {
+            background: white;
+            border-radius: 50px;
+            padding: 18px 20px;
+            text-align: center;
+            width: 150px;
+            cursor: pointer;
+            transition: all 0.15s;
+            box-shadow: 0 8px 0 #c2a575;
+            border: 2px solid #ffbc70;
+        }
+
+        .greeting-card:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #c2a575;
+        }
+
+        .greeting-emoji {
+            font-size: 3.5rem;
+        }
+
+        .greeting-text {
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-top: 8px;
+            font-family: monospace;
+        }
+
+        .listen-btn-card {
+            background: #ffe3b9;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 40px;
+            margin: 12px auto;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+            transition: 0.1s;
+            box-shadow: 0 3px 0 #b97f48;
+        }
+
+        .listen-btn-card:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #b97f48;
+        }
+
+        .feedback-show {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            background: #f2e2ce;
+            border-radius: 60px;
+            padding: 8px;
+        }
+
+        /* repeat section */
+        .repeat-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .repeat-phrase {
+            background: #ffefdb;
+            border-radius: 60px;
+            padding: 12px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .phrase-item {
+            background: #ffffffd9;
+            border-radius: 50px;
+            margin: 12px 0;
+            padding: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .phrase-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c5a7a;
+        }
+
+        .speak-btn {
+            background: #92c9ff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.1s;
+            box-shadow: 0 3px 0 #5f7f9e;
+            font-size: 1rem;
+        }
+
+        .speak-btn:active {
+            transform: translateY(2px);
+        }
+
+        .microphone-note {
+            background: #e7f0fa;
+            border-radius: 35px;
+            padding: 10px;
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .score-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffe2c4;
+            padding: 10px 20px;
+            border-radius: 60px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .score-box {
+            background: #f5ac6e;
+            padding: 5px 18px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .restart-btn {
+            background: #ffa559;
+            border: none;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 8px 24px;
+            border-radius: 40px;
+            cursor: pointer;
+            color: white;
+            transition: 0.1s;
+            box-shadow: 0 4px 0 #8b4b1f;
+        }
+
+        .restart-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #8b4b1f;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.7rem;
+            color: #a57c52;
+        }
+
+        @media (max-width: 700px) {
+            .greeting-card {
+                width: 120px;
+                padding: 12px;
+            }
+            .greeting-text {
+                font-size: 1.2rem;
+            }
+            .phrase-text {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="game-panel">
+    <div class="page-header">
+        <h1>🎧 Page 7 · Listen & Show · Listen & Repeat</h1>
+        <div class="badge-page7">📖 Activity 1 & 2 from the English book (3rd year)</div>
+        <div class="instruction">
+            <span class="instruction-icon">🔊 1️⃣</span> <span>Listen to the word → click the correct picture / text</span>
+            <span class="instruction-icon">🗣️ 2️⃣</span> <span>Listen & repeat aloud! Use the speaker buttons.</span>
+        </div>
+    </div>
+
+    <div class="activities-row">
+        <!-- ACTIVITY 1: LISTEN AND SHOW -->
+        <div class="activity-card">
+            <div class="activity-title">🎯 1. Listen & Show</div>
+            <div style="text-align: center; margin-bottom: 8px;">
+                <button id="playRandomAudioBtn" class="listen-btn-card">🎤 Play a random greeting → SHOW me!</button>
+            </div>
+            <div class="show-options" id="showOptions">
+                <!-- Hello and Goodbye cards -->
+                <div class="greeting-card" data-greeting="Hello">
+                    <div class="greeting-emoji">👋🌞</div>
+                    <div class="greeting-text">Hello</div>
+                </div>
+                <div class="greeting-card" data-greeting="Goodbye">
+                    <div class="greeting-emoji">👋👋</div>
+                    <div class="greeting-text">Goodbye</div>
+                </div>
+            </div>
+            <div class="feedback-show" id="listenShowFeedback">
+                💡 Press the yellow button, listen carefully, then click the correct card.
+            </div>
+            <div style="font-size: 0.8rem; text-align: center; margin-top: 12px;">
+                ⭐ Score +1 for each correct show!
+            </div>
+        </div>
+
+        <!-- ACTIVITY 2: LISTEN AND REPEAT (with speaker support) -->
+        <div class="activity-card">
+            <div class="activity-title">🗣️ 2. Listen & Repeat</div>
+            <div class="repeat-buttons">
+                <div class="repeat-phrase">
+                    <div class="phrase-item">
+                        <span class="phrase-text">👋 Hello</span>
+                        <button class="speak-btn" data-phrase="Hello">🔊 Listen & repeat</button>
+                    </div>
+                    <div class="phrase-item">
+                        <span class="phrase-text">👋 Goodbye</span>
+                        <button class="speak-btn" data-phrase="Goodbye">🔊 Listen & repeat</button>
+                    </div>
+                </div>
+                <div class="microphone-note">
+                    🎙️ <strong>Repeat after the voice!</strong> Say the word out loud. Practice with a friend or teacher.
+                    <br>✨ You can tap "Listen & repeat" as many times as you want.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCORE & RESTART SECTION -->
+    <div class="score-area">
+        <div class="score-box">🏆 Show & Match Score: <span id="showScore">0</span></div>
+        <div id="lastResultMsg" style="font-weight: bold; background: #fff0cc; padding: 5px 15px; border-radius: 30px;">✨ Tap the play button to start ✨</div>
+        <button id="resetListenGame" class="restart-btn">🔄 New Round</button>
+    </div>
+
+    <footer>
+        📘 Based on page 7: "Listen and show" & "Listen and repeat" | Learn greetings with audio!
+    </footer>
+</div>
+
+<script>
+    // ---------- GAME LOGIC FOR PAGE 7 ----------
+    // Activity 1: random audio from pool (Hello / Goodbye), user must click matching card.
+    let currentTargetGreeting = null;   // stores "Hello" or "Goodbye" that is currently being asked
+    let canAnswer = true;               // avoid double answers while processing
+    let showScore = 0;
+    const scoreSpan = document.getElementById('showScore');
+    const listenShowFeedback = document.getElementById('listenShowFeedback');
+    const lastResultMsg = document.getElementById('lastResultMsg');
+    const playRandomBtn = document.getElementById('playRandomAudioBtn');
+    const resetBtn = document.getElementById('resetListenGame');
+    
+    // Speech synthesis helper (cross-browser)
+    function speakText(text, lang = 'en-US', rate = 0.9) {
+        if (!window.speechSynthesis) {
+            console.warn("No speechSynthesis");
+            listenShowFeedback.innerHTML = "⚠️ Your browser doesn't support speech. Ask a friend to read!";
+            return;
+        }
+        window.speechSynthesis.cancel(); // cancel any ongoing speech
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = rate;
+        utterance.pitch = 1.1;
+        utterance.volume = 1;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // function to ask random greeting for Listen & Show
+    function askRandomGreeting() {
+        if (!canAnswer) {
+            // if still locked from previous, ignore new requests quickly
+            listenShowFeedback.innerHTML = "⏳ Wait, finish current challenge first!";
+            return;
+        }
+        // cancel any ongoing speech to avoid overlaps
+        window.speechSynthesis.cancel();
+        const greetings = ["Hello", "Goodbye"];
+        const randomIndex = Math.floor(Math.random() * greetings.length);
+        currentTargetGreeting = greetings[randomIndex];
+        // speak the greeting twice: clear and natural
+        speakText(currentTargetGreeting, 'en-US', 0.85);
+        // update feedback message
+        listenShowFeedback.innerHTML = `🔊 Listening... Which one did you hear? Click the correct card! ( "${currentTargetGreeting}" )`;
+        // unlock answer after a short delay for speech to start, but we already set canAnswer true
+        // but ensure canAnswer remains true; but we need to avoid clicking while audio just started? it's fine, we only lock after answer.
+        // reset any result flag
+        lastResultMsg.innerHTML = "🎧 Listen carefully, then choose!";
+        // we keep canAnswer = true initially. but after answer we lock, then unlock when next asked.
+        // Also highlight the button style feedback
+    }
+
+    // handle user click on greeting card (Hello / Goodbye)
+    function onCardClick(event) {
+        const card = event.currentTarget;
+        const selectedGreeting = card.getAttribute('data-greeting');
+        if (!canAnswer) {
+            listenShowFeedback.innerHTML = "⏳ Wait! Please press the 'Play' button for a new word.";
+            return;
+        }
+        if (currentTargetGreeting === null) {
+            listenShowFeedback.innerHTML = "🔘 First, press the yellow 'Play a random greeting' button!";
+            return;
+        }
+        // lock answer until feedback processing is done
+        canAnswer = false;
+
+        const isCorrect = (selectedGreeting === currentTargetGreeting);
+        if (isCorrect) {
+            // correct answer
+            showScore++;
+            scoreSpan.textContent = showScore;
+            listenShowFeedback.innerHTML = `✅ CORRECT! "${selectedGreeting}" matches! +1 point 🎉`;
+            lastResultMsg.innerHTML = `🎉 Great job! +1 point (Total: ${showScore})`;
+            // play positive reinforcement
+            speakText(`Excellent! You showed ${selectedGreeting}.`, 'en-US', 0.9);
+            // flash green effect on card
+            card.style.transition = "0.1s";
+            card.style.backgroundColor = "#c8f0c1";
+            setTimeout(() => { card.style.backgroundColor = "white"; }, 250);
+        } else {
+            // wrong answer
+            listenShowFeedback.innerHTML = `❌ Oops! You clicked "${selectedGreeting}" but the word was "${currentTargetGreeting}". Try again!`;
+            lastResultMsg.innerHTML = `❌ Not this time. The correct show was "${currentTargetGreeting}". Keep practicing!`;
+            speakText(`No, the word was ${currentTargetGreeting}. Try again!`, 'en-US', 0.9);
+            // flash red
+            card.style.backgroundColor = "#ffd1d1";
+            setTimeout(() => { card.style.backgroundColor = "white"; }, 300);
+        }
+
+        // unlock after delay, but we must reset currentTargetGreeting after a while so next play works
+        setTimeout(() => {
+            canAnswer = true;
+            // do not reset currentTargetGreeting automatically unless new game triggers askRandomGreeting.
+            // But to avoid stale answer after wrong, we could keep currentTargetGreeting until next ask.
+            // it's fine: after this delay, user can press the play button again.
+            if(currentTargetGreeting !== null) {
+                // optional
+            }
+        }, 1500);
+    }
+
+    // reset game: zero score, clear states
+    function resetGame() {
+        window.speechSynthesis.cancel();
+        showScore = 0;
+        scoreSpan.textContent = "0";
+        currentTargetGreeting = null;
+        canAnswer = true;
+        listenShowFeedback.innerHTML = "🔄 Game reset! Press the yellow button to play 'Listen & Show'.";
+        lastResultMsg.innerHTML = "✨ Score reset! New round ready ✨";
+        // cancel any ongoing speech
+    }
+
+    // add event listeners to cards
+    const helloCard = document.querySelector('.greeting-card[data-greeting="Hello"]');
+    const goodbyeCard = document.querySelector('.greeting-card[data-greeting="Goodbye"]');
+    helloCard.addEventListener('click', onCardClick);
+    goodbyeCard.addEventListener('click', onCardClick);
+
+    // Play random button
+    playRandomBtn.addEventListener('click', () => {
+        if (!canAnswer) {
+            listenShowFeedback.innerHTML = "⏳ Please wait, game is processing previous answer.";
+            return;
+        }
+        // reset any flag and ask
+        currentTargetGreeting = null; // force new fresh
+        askRandomGreeting();
+    });
+
+    resetBtn.addEventListener('click', () => {
+        resetGame();
+        // additionally cancel pending speech
+        window.speechSynthesis.cancel();
+        currentTargetGreeting = null;
+        canAnswer = true;
+        listenShowFeedback.innerHTML = "✅ Game ready! Press the yellow button to start listening.";
+        lastResultMsg.innerHTML = "📢 New round! Try to get high score!";
+    });
+
+    // ---------------- ACTIVITY 2 : Listen & Repeat (speaker for each phrase) ----------------
+    const speakButtons = document.querySelectorAll('.speak-btn');
+    speakButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const phrase = btn.getAttribute('data-phrase');
+            if (phrase) {
+                speakText(phrase, 'en-US', 0.8);
+                // optional visual feedback
+                const originalText = btn.innerHTML;
+                btn.innerHTML = "🔊 Speaking...";
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                }, 800);
+            }
+        });
+    });
+
+    // Additional enhancement: add a mini instruction for repeating: show mouth animation? No need.
+    // Provide extra tips for "Listen and repeat" activity as described in page 7.
+    // Also we can add a 'Repeat both' button? But spec matches "Listen & repeat" for each phrase.
+    // For scientific learning, we also add text to encourage repeating aloud.
+
+    // Also for additional teaching: when user clicks a card in show activity, we also could replay the target audio if wrong? 
+    // but fine.
+
+    // Preload friendly intro message
+    setTimeout(() => {
+        speakText("Welcome to page 7, listen and show, and listen and repeat.", 'en-US', 0.85);
+    }, 300);
+    
+    // ensure card hover effects
+    const style = document.createElement('style');
+    style.textContent = `
+        .greeting-card:hover {
+            transform: scale(1.02);
+            background: #fff0e0;
+            cursor: pointer;
+        }
+        .speak-btn:hover {
+            background: #aad4ff;
+            transform: scale(0.98);
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // We'll also add a second way: if user wants to hear the random greeting again without losing current target? we can add "repeat" button optionally:
+    // Since activity 1 also could use a repeat button. Add extra small button to replay current word.
+    const repeatCurrentBtn = document.createElement('button');
+    repeatCurrentBtn.textContent = "🔁 Repeat last word";
+    repeatCurrentBtn.className = "listen-btn-card";
+    repeatCurrentBtn.style.marginTop = "8px";
+    repeatCurrentBtn.style.fontSize = "0.9rem";
+    repeatCurrentBtn.style.padding = "6px 15px";
+    const parentDiv = document.querySelector('.activity-card:first-child .show-options');
+    parentDiv.insertAdjacentElement('afterend', repeatCurrentBtn);
+    
+    repeatCurrentBtn.addEventListener('click', () => {
+        if (currentTargetGreeting) {
+            speakText(currentTargetGreeting, 'en-US', 0.85);
+            listenShowFeedback.innerHTML = `🔁 Repeating: "${currentTargetGreeting}" — now click the matching card!`;
+        } else {
+            listenShowFeedback.innerHTML = "🎧 No active word. Press 'Play a random greeting' first!";
+        }
+    });
+    
+    // Also provide a small helper to encourage speaking in activity 2
+    const repeatSection = document.querySelector('.repeat-phrase');
+    const encouragementDiv = document.createElement('div');
+    encouragementDiv.className = "microphone-note";
+    encouragementDiv.style.marginTop = "8px";
+    encouragementDiv.innerHTML = "💬 <strong>Teacher tip:</strong> After listening, repeat the word clearly! You can record yourself with a voice recorder and compare.";
+    repeatSection.appendChild(encouragementDiv);
+    
+    // Initialize currentTargetGreeting to null
+    currentTargetGreeting = null;
+    canAnswer = true;
+    showScore = 0;
+    scoreSpan.textContent = "0";
+    
+    // final background animation friendly
+    console.log("Page 7 game ready — Listen & Show + Listen & Repeat");
+</script>
+</body>
+</html>

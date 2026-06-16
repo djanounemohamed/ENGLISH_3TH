@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>📘 Pages 14 & 15 | Match · Robotten · Listen & tick 'r' words</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(145deg, #fdf4e3 0%, #f5e8d4 100%);
+            font-family: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI Emoji', cursive, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .game-container {
+            max-width: 1300px;
+            width: 100%;
+            background: #fffef7;
+            border-radius: 70px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+            padding: 20px 28px 35px;
+        }
+        .page-header {
+            text-align: center;
+            border-bottom: 5px dotted #ffb347;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        .page-header h1 {
+            font-size: 2rem;
+            margin: 0;
+            background: linear-gradient(135deg, #4a6e8c, #2c4b6e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .badge {
+            background: #ffddb0;
+            display: inline-block;
+            padding: 5px 18px;
+            border-radius: 60px;
+            font-weight: bold;
+            color: #aa5c1c;
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+        .two-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 25px 0;
+        }
+        .col {
+            flex: 1;
+            min-width: 300px;
+            background: #fffaf2;
+            border-radius: 60px;
+            padding: 18px 20px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+            border: 2px solid #ffe0b5;
+        }
+        .col-title {
+            background: #ffcf95;
+            display: inline-block;
+            padding: 6px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+        }
+        button, .match-card, .tick-word {
+            cursor: pointer;
+            transition: 0.05s linear;
+            font-family: inherit;
+        }
+        /* Matching game style */
+        .match-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .match-column {
+            flex: 1;
+            min-width: 180px;
+            background: #fff5e9;
+            border-radius: 50px;
+            padding: 12px;
+        }
+        .match-card {
+            background: white;
+            border-radius: 50px;
+            padding: 12px;
+            margin: 10px 0;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border: 2px solid #ffd6a5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .match-card.selected {
+            background: #ffe0b5;
+            border: 3px solid #ffa559;
+            transform: scale(1.01);
+        }
+        .match-card.matched {
+            background: #c8e6c1;
+            opacity: 0.7;
+            text-decoration: line-through;
+            pointer-events: none;
+            filter: grayscale(0.1);
+        }
+        .robotten-card {
+            background: #eaf5ff;
+            border-radius: 60px;
+            padding: 15px;
+            text-align: center;
+            margin: 15px 0;
+        }
+        .robotten-avatar {
+            font-size: 4rem;
+        }
+        .listen-speak-btn {
+            background: #ffe3b9;
+            border: none;
+            border-radius: 40px;
+            padding: 8px 20px;
+            font-weight: bold;
+            margin: 8px;
+            box-shadow: 0 3px 0 #c28a4a;
+        }
+        .listen-speak-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #c28a4a;
+        }
+        .r-words-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .tick-word {
+            background: #fff0e0;
+            border-radius: 50px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        .tick-box-small {
+            width: 28px;
+            height: 28px;
+            background: white;
+            border: 3px solid #ffb058;
+            border-radius: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        .tick-word.ticked .tick-box-small {
+            background: #a5d6a5;
+            border-color: #2e7d32;
+        }
+        .feedback-area {
+            background: #ffefdb;
+            border-radius: 60px;
+            padding: 12px 20px;
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .reset-btn {
+            background: #ffa559;
+            border: none;
+            padding: 8px 25px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #a57c52;
+            margin-top: 20px;
+        }
+        @media (max-width: 750px) {
+            .match-card { font-size: 0.9rem; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="game-container">
+    <div class="page-header">
+        <h1>📖 Pages 14 & 15 · Match · Robotten · 'r' words</h1>
+        <div class="badge">🎯 Activity 17: Listen and match | 18: Listen, read & do same | Page 15: Listen & tick 'r' words</div>
+    </div>
+
+    <div class="two-columns">
+        <!-- LEFT COLUMN: Activity 17 (Match) + Activity 18 (Robotten) -->
+        <div class="col">
+            <div class="col-title">🖇️ 17. Listen and match (copybook)</div>
+            <div id="matchGameArea">
+                <p style="font-size:0.85rem;">🔊 Listen to the word, then click on the matching picture/word. Match all pairs!</p>
+                <div class="match-area" id="matchContainer">
+                    <!-- left column: words; right column: pictures/definitions -->
+                </div>
+                <div id="matchFeedback" style="text-align:center; background:#fff0db; border-radius:40px; padding:6px; margin-top:8px;">✨ Click on a word, then click on its match!</div>
+            </div>
+
+            <div class="col-title" style="margin-top: 25px;">🤖 18. Listen, read & do the same with your friend</div>
+            <div class="robotten-card">
+                <div class="robotten-avatar">🤖✨</div>
+                <div id="robottenText"><strong>Hello, I'm Robotten.</strong> I'm ten. I live in Algiers. I speak Arabic, English and French.</div>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 12px 0;">
+                    <button id="listenRobottenBtn" class="listen-speak-btn">🔊 Listen to Robotten</button>
+                    <button id="repeatRobottenBtn" class="listen-speak-btn">🗣️ Repeat after Robotten</button>
+                    <button id="introduceYourselfBtn" class="listen-speak-btn">🧑‍🎤 Introduce yourself (do the same)</button>
+                </div>
+                <div id="robottenFeedback" style="font-size:0.8rem; background:#e2f0e8; border-radius:30px; padding:6px;">💬 Click 'Listen', then read aloud. Then do the same with a friend!</div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Page 15 activities (1,2,3) -->
+        <div class="col">
+            <div class="col-title">🔊 Page 15 · Listen and repeat & tick 'r' words</div>
+            <div style="background:#fef3e6; border-radius:50px; padding:12px; margin-bottom:15px;">
+                <p><strong>1. Listen and repeat</strong></p>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+                    <button class="listen-speak-btn" data-repeat="rabbit">🐇 rabbit</button>
+                    <button class="listen-speak-btn" data-repeat="robot">🤖 robot</button>
+                    <button class="listen-speak-btn" data-repeat="red">🔴 red</button>
+                    <button class="listen-speak-btn" data-repeat="rainbow">🌈 rainbow</button>
+                    <button class="listen-speak-btn" data-repeat="run">🏃 run</button>
+                </div>
+            </div>
+
+            <div>
+                <p><strong>2. Listen and tick the box when you hear the 'r' words</strong></p>
+                <div class="r-words-grid" id="rWordsGrid">
+                    <!-- Words: some with 'r', some without -->
+                </div>
+                <button id="playRandomRWord" class="listen-speak-btn" style="margin-top:5px;">🎲 Listen to a random word → tick if it has 'r'</button>
+                <button id="repeatLastRWord" class="listen-speak-btn">🔁 Repeat last word</button>
+                <div id="rWordFeedback" style="background:#fff0db; border-radius:40px; padding:8px; margin-top:12px; text-align:center;">👂 Listen and tick the correct box when you hear an 'r' sound!</div>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <p><strong>3. Listen, look and repeat</strong> (extra practice)</p>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <button class="listen-speak-btn" data-phrase="I like red roses.">🌹 I like red roses.</button>
+                    <button class="listen-speak-btn" data-phrase="The rabbit runs fast.">🐇 The rabbit runs fast.</button>
+                    <button class="listen-speak-btn" data-phrase="My robot is ready.">🤖 My robot is ready.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feedback-area">
+        <span>⭐ Based on pages 14-15: Matching, Robotten, 'r' words listening ⭐</span>
+        <button id="globalResetBtn" class="reset-btn">🔄 Reset All Activities</button>
+    </div>
+    <footer>📘 Activity 17: Match the words with the pictures | 18: Listen to Robotten and introduce yourself | Page 15: Practice 'r' words and tick boxes</footer>
+</div>
+
+<script>
+    // ========== SPEECH SYNTHESIS ==========
+    function speakText(text, rate = 0.85, lang = 'en-US') {
+        if (!window.speechSynthesis) return;
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = rate;
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // ---------- ACTIVITY 17: LISTEN AND MATCH ----------
+    // Pairs: word -> match description/emoji (like in copybook)
+    const matchPairs = [
+        { word: "rabbit", match: "🐇 rabbit", audio: "rabbit" },
+        { word: "robot", match: "🤖 robot", audio: "robot" },
+        { word: "red", match: "🔴 red colour", audio: "red" },
+        { word: "rainbow", match: "🌈 rainbow", audio: "rainbow" },
+        { word: "run", match: "🏃‍♀️ run", audio: "run" }
+    ];
+    
+    let selectedSide = null; // 'left' or 'right'
+    let selectedValue = null;
+    let matchedLeft = new Array(matchPairs.length).fill(false);
+    let matchedRight = new Array(matchPairs.length).fill(false);
+    
+    function renderMatchGame() {
+        const container = document.getElementById('matchContainer');
+        container.innerHTML = '';
+        // left column (words)
+        const leftCol = document.createElement('div');
+        leftCol.className = 'match-column';
+        leftCol.innerHTML = '<div style="text-align:center; font-weight:bold;">📖 Words</div>';
+        matchPairs.forEach((pair, idx) => {
+            const card = document.createElement('div');
+            card.className = 'match-card';
+            if (matchedLeft[idx]) card.classList.add('matched');
+            card.innerHTML = `🔊 ${pair.word}`;
+            card.dataset.index = idx;
+            card.dataset.side = 'left';
+            card.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (matchedLeft[idx]) return;
+                handleMatchSelect('left', idx, pair.word);
+            });
+            leftCol.appendChild(card);
+        });
+        // right column (matches)
+        const rightCol = document.createElement('div');
+        rightCol.className = 'match-column';
+        rightCol.innerHTML = '<div style="text-align:center; font-weight:bold;">🎯 Match (picture/meaning)</div>';
+        matchPairs.forEach((pair, idx) => {
+            const card = document.createElement('div');
+            card.className = 'match-card';
+            if (matchedRight[idx]) card.classList.add('matched');
+            card.innerHTML = pair.match;
+            card.dataset.index = idx;
+            card.dataset.side = 'right';
+            card.addEventListener('click', (e) => {
+                if (matchedRight[idx]) return;
+                handleMatchSelect('right', idx, pair.match);
+            });
+            rightCol.appendChild(card);
+        });
+        container.appendChild(leftCol);
+        container.appendChild(rightCol);
+    }
+    
+    function handleMatchSelect(side, idx, displayText) {
+        const feedbackDiv = document.getElementById('matchFeedback');
+        if (selectedSide === null) {
+            // first selection
+            selectedSide = side;
+            selectedValue = { idx, side };
+            // highlight selected card
+            highlightCard(side, idx, true);
+            feedbackDiv.innerHTML = `👉 Selected "${displayText}". Now click its match on the other side.`;
+            speakText(displayText, 0.85);
+        } else {
+            // second selection
+            if (selectedSide === side) {
+                // same side, reset selection
+                clearHighlight();
+                selectedSide = null;
+                selectedValue = null;
+                feedbackDiv.innerHTML = `🔄 Same side clicked. Selection reset. Try again.`;
+                return;
+            }
+            // different side: check if indices match
+            const firstIdx = selectedValue.idx;
+            const secondIdx = idx;
+            if (firstIdx === secondIdx && !matchedLeft[firstIdx] && !matchedRight[secondIdx]) {
+                // correct match
+                matchedLeft[firstIdx] = true;
+                matchedRight[secondIdx] = true;
+                feedbackDiv.innerHTML = `✅ Correct match! "${matchPairs[firstIdx].word}" ↔ ${matchPairs[firstIdx].match} 🎉`;
+                speakText(`Great match! ${matchPairs[firstIdx].word}`, 0.85);
+                clearHighlight();
+                renderMatchGame();
+                // check if all matched
+                if (matchedLeft.every(v => v === true)) {
+                    feedbackDiv.innerHTML = `🏆 PERFECT! You matched all pairs! 🏆 Listen and match activity completed!`;
+                    speakText(`Excellent! You finished all matches.`, 0.9);
+                }
+            } else {
+                // wrong match
+                feedbackDiv.innerHTML = `❌ Wrong match! "${matchPairs[firstIdx].word}" does not match "${matchPairs[secondIdx].match}". Try again!`;
+                speakText(`Not correct. Try again.`, 0.85);
+                clearHighlight();
+            }
+            selectedSide = null;
+            selectedValue = null;
+        }
+    }
+    
+    function highlightCard(side, idx, highlight) {
+        const cards = document.querySelectorAll('.match-card');
+        cards.forEach(card => {
+            if (card.dataset.side === side && parseInt(card.dataset.index) === idx) {
+                if (highlight) card.classList.add('selected');
+                else card.classList.remove('selected');
+            }
+        });
+    }
+    function clearHighlight() {
+        const cards = document.querySelectorAll('.match-card');
+        cards.forEach(c => c.classList.remove('selected'));
+    }
+    
+    // Reset match game
+    function resetMatchGame() {
+        matchedLeft.fill(false);
+        matchedRight.fill(false);
+        selectedSide = null;
+        selectedValue = null;
+        renderMatchGame();
+        document.getElementById('matchFeedback').innerHTML = "✨ Game reset! Listen and match the pairs.";
+    }
+    
+    // ---------- ACTIVITY 18: Robotten & do the same ----------
+    const robottenText = "Hello, I'm Robotten. I'm ten. I live in Algiers. I speak Arabic, English and French.";
+    document.getElementById('listenRobottenBtn').addEventListener('click', () => {
+        speakText(robottenText, 0.85);
+        document.getElementById('robottenFeedback').innerHTML = "🔊 Robotten is speaking. Now repeat with your friend!";
+    });
+    document.getElementById('repeatRobottenBtn').addEventListener('click', () => {
+        speakText("Now you say: " + robottenText, 0.85);
+        document.getElementById('robottenFeedback').innerHTML = "🗣️ Repeat after the voice: " + robottenText.substring(0, 40) + "...";
+    });
+    document.getElementById('introduceYourselfBtn').addEventListener('click', () => {
+        const userName = prompt("What's your name?", "Alex") || "my friend";
+        const userAge = prompt("How old are you? (e.g., 9)", "9") || "nine";
+        const userCity = prompt("Where do you live?", "Algiers") || "my city";
+        const userLangs = prompt("Which languages do you speak? (e.g., Arabic, English)", "Arabic and English") || "Arabic and English";
+        const selfIntro = `Hello, I'm ${userName}. I'm ${userAge}. I live in ${userCity}. I speak ${userLangs}.`;
+        speakText(selfIntro, 0.9);
+        document.getElementById('robottenFeedback').innerHTML = `🎤 You introduced yourself: "${selfIntro}" — Great! Now do the same with a real friend.`;
+    });
+    
+    // ---------- PAGE 15: LISTEN AND REPEAT (common phrases) ----------
+    const repeatBtns = document.querySelectorAll('[data-repeat]');
+    repeatBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const word = btn.getAttribute('data-repeat');
+            speakText(word, 0.85);
+        });
+    });
+    const phraseBtns = document.querySelectorAll('[data-phrase]');
+    phraseBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const phrase = btn.getAttribute('data-phrase');
+            speakText(phrase, 0.85);
+        });
+    });
+    
+    // ---------- ACTIVITY 2: TICK THE BOX WHEN YOU HEAR 'r' WORDS ----------
+    const rWordsList = [
+        { word: "rabbit", hasR: true, ticked: false },
+        { word: "robot", hasR: true, ticked: false },
+        { word: "red", hasR: true, ticked: false },
+        { word: "rainbow", hasR: true, ticked: false },
+        { word: "run", hasR: true, ticked: false },
+        { word: "car", hasR: false, ticked: false },   // contains 'r'? actually 'car' has R? Car has letter R? Yes 'r' is present! But for educational, we show words that start with R vs not. We'll use clear non-r words like 'ball', 'cat'
+        { word: "ball", hasR: false, ticked: false },
+        { word: "cat", hasR: false, ticked: false },
+        { word: "dog", hasR: false, ticked: false }
+    ];
+    // better adjust: ensure some have no 'r' sound (phonetically). Use explicit set: words starting with R vs not.
+    const rActivityWords = [
+        { text: "🐰 rabbit", hasR: true, id: "r1" },
+        { text: "🤖 robot", hasR: true, id: "r2" },
+        { text: "🔴 red", hasR: true, id: "r3" },
+        { text: "🌈 rainbow", hasR: true, id: "r4" },
+        { text: "🏃 run", hasR: true, id: "r5" },
+        { text: "⚽ ball", hasR: false, id: "no1" },
+        { text: "🐱 cat", hasR: false, id: "no2" },
+        { text: "🐶 dog", hasR: false, id: "no3" }
+    ];
+    
+    let lastSpokenRWord = null;
+    let currentRChallengeWord = null;
+    
+    function renderRWordGrid() {
+        const grid = document.getElementById('rWordsGrid');
+        grid.innerHTML = '';
+        rActivityWords.forEach((item, idx) => {
+            const wordDiv = document.createElement('div');
+            wordDiv.className = 'tick-word';
+            if (item.ticked) wordDiv.classList.add('ticked');
+            wordDiv.innerHTML = `
+                <div class="tick-box-small" id="tickBox_${idx}">${item.ticked ? '✓' : '☐'}</div>
+                <span>${item.text}</span>
+            `;
+            wordDiv.addEventListener('click', () => {
+                // toggle tick manually? But game rule: tick when you hear 'r' word from audio.
+                // But we also allow manual tick for practice? Actually according to activity: listen and tick when you hear the 'r' words.
+                // So we can implement that the random audio will ask to tick correct box.
+                // For manual practice we also add ability but restrict to audio challenge?
+                // Better: only allow ticking via challenge, but also teacher can reset. I'll implement: ticking is only enabled during challenge? Let's make it flexible: user can tick any box to practice, but the audio challenge will highlight correct.
+                // To respect original: "Listen and tick the box when you hear the 'r' words." I'll make that when random word is spoken, user must tick the corresponding box only if it has 'r'.
+                // So I'll attach a "Check and tick" mode.
+                // For simplicity: clicking the box toggles tick manually (for copybook simulation).
+                if (!item.ticked) {
+                    item.ticked = true;
+                    wordDiv.classList.add('ticked');
+                    document.getElementById(`tickBox_${idx}`).innerHTML = '✓';
+                    document.getElementById('rWordFeedback').innerHTML = `✅ You ticked "${item.text}". Did it have an 'r' sound? ${item.hasR ? 'Yes! Good.' : 'Be careful: this word does NOT start with R sound.'}`;
+                    if (item.hasR) speakText(`You ticked ${item.text} because it has the R sound.`, 0.85);
+                    else speakText(`This word does not begin with R. Listen again.`, 0.85);
+                } else {
+                    item.ticked = false;
+                    wordDiv.classList.remove('ticked');
+                    document.getElementById(`tickBox_${idx}`).innerHTML = '☐';
+                }
+            });
+            grid.appendChild(wordDiv);
+        });
+    }
+    
+    function resetRWordsTicks() {
+        rActivityWords.forEach(w => w.ticked = false);
+        renderRWordGrid();
+        document.getElementById('rWordFeedback').innerHTML = "👂 Ticks reset! Listen to the random word and tick only words that have the 'r' sound.";
+    }
+    
+    // random r-word challenge
+    function playRandomRWordChallenge() {
+        const randomIndex = Math.floor(Math.random() * rActivityWords.length);
+        const chosen = rActivityWords[randomIndex];
+        currentRChallengeWord = chosen;
+        lastSpokenRWord = chosen;
+        speakText(chosen.text.replace(/[^a-z]/gi, ' ').trim() + (chosen.hasR ? " begins with R" : ""), 0.85);
+        document.getElementById('rWordFeedback').innerHTML = `🔊 Heard: "${chosen.text}". If it has an 'r' sound, click its tick box! ${chosen.hasR ? '(Yes, it has R)' : '(No R sound)'}`;
+        // auto-highlight suggestion? not, let user decide
+    }
+    
+    document.getElementById('playRandomRWord').addEventListener('click', () => {
+        playRandomRWordChallenge();
+    });
+    document.getElementById('repeatLastRWord').addEventListener('click', () => {
+        if (lastSpokenRWord) {
+            speakText(lastSpokenRWord.text.replace(/[^a-z]/gi, ' ').trim(), 0.85);
+            document.getElementById('rWordFeedback').innerHTML = `🔁 Repeating: "${lastSpokenRWord.text}" — tick the box if it has R sound.`;
+        } else {
+            document.getElementById('rWordFeedback').innerHTML = `👉 Press "Listen to a random word" first.`;
+        }
+    });
+    
+    // Global reset function
+    function globalReset() {
+        window.speechSynthesis.cancel();
+        resetMatchGame();
+        // reset Robotten feedback
+        document.getElementById('robottenFeedback').innerHTML = "💬 Click 'Listen', then read aloud. Then do the same with a friend!";
+        // reset r-words ticks
+        resetRWordsTicks();
+        // reset any current challenge
+        currentRChallengeWord = null;
+        lastSpokenRWord = null;
+        document.getElementById('rWordFeedback').innerHTML = "👂 All reset! Practice listening and ticking 'r' words.";
+        speakText("All activities reset. Let's practice pages 14 and 15!", 0.9);
+    }
+    
+    document.getElementById('globalResetBtn').addEventListener('click', globalReset);
+    
+    // Initialize all
+    renderMatchGame();
+    renderRWordGrid();
+    
+    // Additional: extra listen for match pairs individually (activity 17 listen part)
+    // Add a small speaker on each word to listen before matching
+    function addListenIconsToMatch() {
+        // enhance left column with listen icons? We'll add a small button inside each left card after render.
+        // but cards are re-rendered, so we use event delegation? Instead modify after render.
+        const style = document.createElement('style');
+        style.textContent = ` .match-card { position: relative; } .listen-match { margin-left: 8px; background:#ffe1b0; border-radius:30px; padding:2px 8px; font-size:0.7rem; } `;
+        document.head.appendChild(style);
+        function attachListenToCards() {
+            const leftCards = document.querySelectorAll('.match-column:first-child .match-card');
+            leftCards.forEach((card, idx) => {
+                if (!card.querySelector('.listen-match')) {
+                    const listenSpan = document.createElement('span');
+                    listenSpan.textContent = '🔊';
+                    listenSpan.className = 'listen-match';
+                    listenSpan.style.marginLeft = '8px';
+                    listenSpan.style.cursor = 'pointer';
+                    listenSpan.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const word = matchPairs[idx].word;
+                        speakText(word, 0.85);
+                    });
+                    card.appendChild(listenSpan);
+                }
+            });
+        }
+        const observer = new MutationObserver(() => attachListenToCards());
+        observer.observe(document.getElementById('matchContainer'), { childList: true, subtree: true });
+        attachListenToCards();
+    }
+    addListenIconsToMatch();
+    
+    // Welcome message
+    window.addEventListener('load', () => {
+        speakText("Welcome to pages 14 and 15. Match the words, meet Robotten, and listen for the letter R.", 0.9);
+    });
+</script>
+</body>
+</html>

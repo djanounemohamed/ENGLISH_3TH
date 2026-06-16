@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>📘 Pages 12 & 13 | Story · Numbers · Tick the box · Act out Scene 4</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(145deg, #f9f2e0 0%, #efe1c7 100%);
+            font-family: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI Emoji', cursive, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .game-container {
+            max-width: 1300px;
+            width: 100%;
+            background: #fffef7;
+            border-radius: 70px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+            padding: 20px 28px 35px;
+        }
+        .page-header {
+            text-align: center;
+            border-bottom: 5px dotted #ffb347;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        .page-header h1 {
+            font-size: 2rem;
+            margin: 0;
+            background: linear-gradient(135deg, #3b6e4a, #1f5438);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .badge {
+            background: #ffddb0;
+            display: inline-block;
+            padding: 5px 18px;
+            border-radius: 60px;
+            font-weight: bold;
+            color: #aa5c1c;
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+        .two-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 25px 0;
+        }
+        .col {
+            flex: 1;
+            min-width: 280px;
+            background: #fffaf2;
+            border-radius: 60px;
+            padding: 18px 20px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+            border: 2px solid #ffe0b5;
+        }
+        .col-title {
+            background: #ffcf95;
+            display: inline-block;
+            padding: 6px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+        }
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            transition: 0.05s linear;
+        }
+        .story-box {
+            background: #fdf5e6;
+            border-radius: 50px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 12px solid #ffb347;
+        }
+        .scene {
+            background: #fff1e0;
+            margin: 12px 0;
+            padding: 10px;
+            border-radius: 35px;
+        }
+        .listen-btn {
+            background: #ffe3b9;
+            border: none;
+            border-radius: 40px;
+            padding: 6px 16px;
+            font-weight: bold;
+            margin: 5px;
+            box-shadow: 0 3px 0 #c28a4a;
+        }
+        .listen-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #c28a4a;
+        }
+        .number-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .num-btn {
+            background: #ffefdb;
+            width: 70px;
+            padding: 12px 0;
+            text-align: center;
+            border-radius: 50px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            box-shadow: 0 5px 0 #bda27e;
+            cursor: pointer;
+        }
+        .num-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #bda27e;
+        }
+        .tick-item {
+            background: #fff3e6;
+            border-radius: 60px;
+            padding: 10px 18px;
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tick-box {
+            width: 30px;
+            height: 30px;
+            background: white;
+            border: 3px solid #ffb058;
+            border-radius: 15px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1.5rem;
+            line-height: 24px;
+        }
+        .tick-box.ticked {
+            background: #b5d8a0;
+            border-color: #2e6b2e;
+        }
+        .ask-answer-area {
+            text-align: center;
+        }
+        .dialog-bubble {
+            background: #eef4fc;
+            border-radius: 50px;
+            padding: 12px;
+            margin: 12px 0;
+        }
+        .actout-card {
+            background: #ffe8d4;
+            border-radius: 50px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .feedback-area {
+            background: #ffefdb;
+            border-radius: 60px;
+            padding: 12px 20px;
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .reset-btn {
+            background: #ffa559;
+            border: none;
+            padding: 8px 25px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #a57c52;
+            margin-top: 20px;
+        }
+        @media (max-width: 750px) {
+            .num-btn { width: 55px; font-size: 1.4rem; }
+            .tick-item { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="game-container">
+    <div class="page-header">
+        <h1>📖 Pages 12 & 13 · Story · Numbers · Tick & Act out!</h1>
+        <div class="badge">🎭 Activities 12 → 16 | Listen to the story · Say the number · Tick · Ask & Answer · Scene 4</div>
+    </div>
+
+    <div class="two-columns">
+        <!-- LEFT COLUMN: Story + Activity 13 (Listen and say the number) -->
+        <div class="col">
+            <div class="col-title">🎧 12. Listen to the story</div>
+            <div class="story-box" id="storyArea">
+                <div class="scene"><strong>🌟 Scene 1:</strong> Lily and Tom are playing in the garden. Lily has a red ball. Tom says, "Let's play!"</div>
+                <div class="scene"><strong>🌟 Scene 2:</strong> The ball rolls under a tree. A little bird appears. "Tweet! Tweet!" The bird finds the ball.</div>
+                <div class="scene"><strong>🌟 Scene 3:</strong> Lily and Tom thank the bird. They share their cookies with the bird. The bird is happy.</div>
+                <div class="scene"><strong>🎭 Scene 4 (ACT OUT!):</strong> Lily: "Thank you, little bird!"  Tom: "You are our friend!"  Bird: "Tweet tweet, let's play every day!"</div>
+            </div>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <button id="listenFullStoryBtn" class="listen-btn">🔊 Listen to full story</button>
+                <button id="listenScene4Btn" class="listen-btn">🎭 Listen to Scene 4 only</button>
+            </div>
+
+            <div class="col-title" style="margin-top: 20px;">🔢 13. Listen & say the number</div>
+            <div id="numberActivity">
+                <div style="text-align: center;">
+                    <button id="randomNumberSpeaker" class="listen-btn">🎲 Listen to a number</button>
+                    <button id="repeatNumberSpeaker" class="listen-btn">🔁 Repeat last number</button>
+                </div>
+                <div class="number-grid" id="numberButtonsGrid">
+                    <!-- 1-10 numbers will be injected -->
+                </div>
+                <div id="numberFeedback" style="background:#fff0db; border-radius:40px; padding:8px; text-align:center; margin-top:10px;">
+                    🎧 Click the speaker, listen, then tap the correct number!
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Activities 14, 15, 16 -->
+        <div class="col">
+            <div class="col-title">✅ 14. Listen, repeat & tick the right box</div>
+            <div id="tickActivity">
+                <div class="tick-item">
+                    <span>🔊 "The bird is in the tree."</span>
+                    <button class="listen-btn small-listen" data-sentence="The bird is in the tree.">Listen</button>
+                    <div class="tick-box" data-tick="0">☐</div>
+                </div>
+                <div class="tick-item">
+                    <span>🔊 "Lily has a red ball."</span>
+                    <button class="listen-btn small-listen" data-sentence="Lily has a red ball.">Listen</button>
+                    <div class="tick-box" data-tick="1">☐</div>
+                </div>
+                <div class="tick-item">
+                    <span>🔊 "The bird likes cookies."</span>
+                    <button class="listen-btn small-listen" data-sentence="The bird likes cookies.">Listen</button>
+                    <div class="tick-box" data-tick="2">☐</div>
+                </div>
+                <div id="tickMessage" style="font-size:0.8rem; margin-top:8px;">💡 Listen, repeat aloud, then tick the box!</div>
+            </div>
+
+            <div class="col-title" style="margin-top: 20px;">💬 15. Ask and answer</div>
+            <div class="ask-answer-area">
+                <div class="dialog-bubble" id="qaBubble">
+                    ❓ "What's your favourite colour?"
+                </div>
+                <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                    <button id="askBtn" class="listen-btn">🎤 Ask the question</button>
+                    <button id="answerBtn" class="listen-btn">🎤 Answer (say your favourite colour)</button>
+                </div>
+                <input type="text" id="answerInput" placeholder="Type your answer (e.g., blue)" style="margin-top:12px; padding:8px; border-radius:60px; border:2px solid #ffcd94; width:80%; text-align:center;">
+                <button id="customAnswerBtn" class="listen-btn" style="margin-top:6px;">🗣️ Speak my answer</button>
+                <div id="qaFeedback" style="font-size:0.8rem; margin-top:8px;">✨ Ask a friend or practice with the buttons!</div>
+            </div>
+
+            <div class="col-title" style="margin-top: 20px;">🎭 16. Act out scene 4</div>
+            <div class="actout-card">
+                <div style="font-weight:bold;">🎬 Scene 4 script:</div>
+                <div>🐦 <strong>Bird:</strong> "Tweet tweet! Let's play every day!"</div>
+                <div>👧 <strong>Lily:</strong> "Thank you, little bird!"</div>
+                <div>👦 <strong>Tom:</strong> "You are our friend!"</div>
+                <div style="margin-top: 12px;">
+                    <button id="actOutBird" class="listen-btn">🐦 Act as Bird</button>
+                    <button id="actOutLily" class="listen-btn">👧 Act as Lily</button>
+                    <button id="actOutTom" class="listen-btn">👦 Act as Tom</button>
+                    <button id="fullScene4" class="listen-btn">🎭 Listen to full scene</button>
+                </div>
+                <div id="actOutFeedback" style="margin-top: 12px; background:#fff7e8; border-radius:30px; padding:6px;">💬 Choose a role, repeat the line, then act with a friend!</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feedback-area">
+        <span>⭐ Based on pages 12-13: Story, numbers, tick boxes, dialogue & acting ⭐</span>
+        <button id="globalResetBtn" class="reset-btn">🔄 Reset all activities</button>
+    </div>
+    <footer>📘 Activity 12: Listen to story | 13: Listen and say the number | 14: Listen, repeat and tick | 15: Ask and answer | 16: Act out scene 4</footer>
+</div>
+
+<script>
+    // ========== SPEECH SYNTHESIS ==========
+    function speakText(text, rate = 0.85, lang = 'en-US') {
+        if (!window.speechSynthesis) {
+            console.warn("Speech not supported");
+            return;
+        }
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = rate;
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // ---------- STORY (ACTIVITY 12) ----------
+    const fullStoryText = "Scene 1. Lily and Tom are playing in the garden. Lily has a red ball. Tom says, Let's play! Scene 2. The ball rolls under a tree. A little bird appears. Tweet tweet! The bird finds the ball. Scene 3. Lily and Tom thank the bird. They share their cookies with the bird. The bird is happy. Scene 4. Lily says: Thank you little bird! Tom says: You are our friend! The bird says: Tweet tweet, let's play every day!";
+    const scene4Text = "Lily says: Thank you, little bird! Tom says: You are our friend! The bird says: Tweet tweet, let's play every day!";
+    
+    document.getElementById('listenFullStoryBtn').addEventListener('click', () => {
+        speakText(fullStoryText, 0.9);
+        document.getElementById('numberFeedback').innerHTML = "📖 Story is playing! Listen carefully.";
+    });
+    document.getElementById('listenScene4Btn').addEventListener('click', () => {
+        speakText(scene4Text, 0.9);
+    });
+    
+    // ---------- ACTIVITY 13: NUMBERS (Listen and say the number) ----------
+    let currentRandomNumber = null;
+    let lastSpokenNumber = null;
+    const numberGrid = document.getElementById('numberButtonsGrid');
+    for (let i = 1; i <= 10; i++) {
+        const btn = document.createElement('div');
+        btn.className = 'num-btn';
+        btn.textContent = i;
+        btn.dataset.num = i;
+        btn.addEventListener('click', () => {
+            const clickedNum = parseInt(btn.dataset.num);
+            if (currentRandomNumber !== null && clickedNum === currentRandomNumber) {
+                document.getElementById('numberFeedback').innerHTML = `🎉 CORRECT! You showed ${clickedNum}. Great listening! +1 🎉`;
+                speakText(`Excellent! You showed number ${clickedNum}.`, 0.9);
+                btn.style.backgroundColor = "#b5e3b5";
+                setTimeout(() => btn.style.backgroundColor = "#ffefdb", 300);
+                currentRandomNumber = null;
+            } else if (currentRandomNumber !== null) {
+                document.getElementById('numberFeedback').innerHTML = `❌ Not that! The number was ${currentRandomNumber}. Try again!`;
+                speakText(`No, the number was ${currentRandomNumber}.`, 0.85);
+                btn.style.backgroundColor = "#ffc9c9";
+                setTimeout(() => btn.style.backgroundColor = "#ffefdb", 300);
+            } else {
+                speakText(`Number ${clickedNum}`, 0.85);
+                document.getElementById('numberFeedback').innerHTML = `🔢 You showed ${clickedNum}. Say it loud!`;
+            }
+        });
+        numberGrid.appendChild(btn);
+    }
+    
+    function speakRandomNumber() {
+        const rand = Math.floor(Math.random() * 10) + 1;
+        currentRandomNumber = rand;
+        lastSpokenNumber = rand;
+        speakText(`Number ${rand}. Show me ${rand}!`, 0.85);
+        document.getElementById('numberFeedback').innerHTML = `🔊 Listening... Click on the number: ${rand} ? Tap the correct digit.`;
+    }
+    document.getElementById('randomNumberSpeaker').addEventListener('click', speakRandomNumber);
+    document.getElementById('repeatNumberSpeaker').addEventListener('click', () => {
+        if (lastSpokenNumber !== null) {
+            speakText(`Repeat: number ${lastSpokenNumber}`, 0.85);
+            document.getElementById('numberFeedback').innerHTML = `🔁 Repeating: Show ${lastSpokenNumber} if you haven't yet.`;
+            currentRandomNumber = lastSpokenNumber;
+        } else {
+            document.getElementById('numberFeedback').innerHTML = `👉 Press "Listen to a number" first!`;
+            speakText(`Press the random number button first.`);
+        }
+    });
+    
+    // ---------- ACTIVITY 14: Listen, repeat & tick the right box ----------
+    const tickBoxes = document.querySelectorAll('.tick-box');
+    const tickMessages = ["The bird is in the tree.", "Lily has a red ball.", "The bird likes cookies."];
+    // set data attributes
+    tickBoxes.forEach((box, idx) => {
+        box.setAttribute('data-tick-idx', idx);
+        box.addEventListener('click', () => {
+            // toggle tick (visual check)
+            if (box.classList.contains('ticked')) {
+                box.classList.remove('ticked');
+                box.innerHTML = '☐';
+            } else {
+                box.classList.add('ticked');
+                box.innerHTML = '✓';
+                speakText(`Ticked box for ${tickMessages[idx]}`, 0.8);
+                document.getElementById('tickMessage').innerHTML = `✅ You ticked the box for "${tickMessages[idx]}". Great!`;
+            }
+            // check all ticked? optional
+            const allTicked = Array.from(tickBoxes).every(b => b.classList.contains('ticked'));
+            if (allTicked) {
+                document.getElementById('tickMessage').innerHTML = "🌟 Perfect! You listened, repeated and ticked all boxes! 🌟";
+                speakText("Wonderful! You finished the tick activity.", 0.85);
+            }
+        });
+    });
+    // attach listen buttons for each sentence
+    const smallListenBtns = document.querySelectorAll('.small-listen');
+    smallListenBtns.forEach((btn, idx) => {
+        btn.addEventListener('click', (e) => {
+            const sentence = btn.getAttribute('data-sentence');
+            speakText(sentence, 0.85);
+            document.getElementById('tickMessage').innerHTML = `🔊 Now repeat: "${sentence}" then tick the box!`;
+        });
+    });
+    
+    // ---------- ACTIVITY 15: Ask and answer ----------
+    const askBtn = document.getElementById('askBtn');
+    const answerBtn = document.getElementById('answerBtn');
+    const answerInput = document.getElementById('answerInput');
+    const customAnswerBtn = document.getElementById('customAnswerBtn');
+    const qaBubble = document.getElementById('qaBubble');
+    const qaFeedbackDiv = document.getElementById('qaFeedback');
+    
+    askBtn.addEventListener('click', () => {
+        const question = "What's your favourite colour?";
+        speakText(question, 0.85);
+        qaBubble.innerHTML = `❓ "${question}" – Now answer!`;
+        qaFeedbackDiv.innerHTML = `🎤 Listen to the question and answer with your favourite colour.`;
+    });
+    answerBtn.addEventListener('click', () => {
+        const defaultAnswer = "My favourite colour is blue.";
+        speakText(defaultAnswer, 0.85);
+        qaBubble.innerHTML = `💬 "${defaultAnswer}" – Nice answer!`;
+        qaFeedbackDiv.innerHTML = `✨ Now ask a friend or type your own answer below!`;
+    });
+    customAnswerBtn.addEventListener('click', () => {
+        let customAns = answerInput.value.trim();
+        if (customAns === "") customAns = "red";
+        const fullAnswer = `My favourite colour is ${customAns}.`;
+        speakText(fullAnswer, 0.85);
+        qaBubble.innerHTML = `💬 "${fullAnswer}" – Great!`;
+        qaFeedbackDiv.innerHTML = `🎉 You answered! Now practice asking and answering with a partner.`;
+    });
+    
+    // ---------- ACTIVITY 16: Act out scene 4 ----------
+    const actBird = document.getElementById('actOutBird');
+    const actLily = document.getElementById('actOutLily');
+    const actTom = document.getElementById('actOutTom');
+    const fullScene4Btn = document.getElementById('fullScene4');
+    const actOutFeedback = document.getElementById('actOutFeedback');
+    
+    actBird.addEventListener('click', () => {
+        const birdLine = "Tweet tweet! Let's play every day!";
+        speakText(birdLine, 0.9);
+        actOutFeedback.innerHTML = `🐦 You acted as Bird: "${birdLine}" 🎭 Now invite a friend to act as Lily or Tom!`;
+    });
+    actLily.addEventListener('click', () => {
+        const lilyLine = "Thank you, little bird!";
+        speakText(lilyLine, 0.9);
+        actOutFeedback.innerHTML = `👧 You acted as Lily: "${lilyLine}" 🎭 Great! Now act with Tom and Bird.`;
+    });
+    actTom.addEventListener('click', () => {
+        const tomLine = "You are our friend!";
+        speakText(tomLine, 0.9);
+        actOutFeedback.innerHTML = `👦 You acted as Tom: "${tomLine}" 🎭 Perfect! You can now perform the whole scene.`;
+    });
+    fullScene4Btn.addEventListener('click', () => {
+        const fullScene = "Bird: Tweet tweet! Let's play every day! Lily: Thank you, little bird! Tom: You are our friend!";
+        speakText(fullScene, 0.88);
+        actOutFeedback.innerHTML = `🎬 Full scene 4 is playing! Listen and act with your friends.`;
+    });
+    
+    // ---------- GLOBAL RESET ----------
+    function globalReset() {
+        // reset speech
+        window.speechSynthesis.cancel();
+        // reset numbers
+        currentRandomNumber = null;
+        lastSpokenNumber = null;
+        document.getElementById('numberFeedback').innerHTML = "🎧 Listen and click the correct number card!";
+        // reset tick boxes
+        tickBoxes.forEach(box => {
+            box.classList.remove('ticked');
+            box.innerHTML = '☐';
+        });
+        document.getElementById('tickMessage').innerHTML = "💡 Listen, repeat aloud, then tick the box!";
+        // reset Q&A
+        answerInput.value = "";
+        qaBubble.innerHTML = `❓ "What's your favourite colour?"`;
+        qaFeedbackDiv.innerHTML = `✨ Ask a friend or practice with the buttons!`;
+        // reset act out feedback
+        actOutFeedback.innerHTML = "💬 Choose a role, repeat the line, then act with a friend!";
+        // optional story message
+        document.getElementById('numberFeedback').innerHTML = "🎧 Press the number speaker to start.";
+        speakText("All activities reset. Let's practice pages 12 and 13 again!", 0.85);
+    }
+    document.getElementById('globalResetBtn').addEventListener('click', globalReset);
+    
+    // Additional small enhancements: show that "Listen and say the number" encourages saying aloud
+    const numberHelp = document.createElement('div');
+    numberHelp.style.fontSize = "0.7rem";
+    numberHelp.style.textAlign = "center";
+    numberHelp.style.marginTop = "5px";
+    numberHelp.innerHTML = "💡 After hearing the number, click the matching digit. Say it aloud too!";
+    document.getElementById('numberActivity').appendChild(numberHelp);
+    
+    // For activity 14: add encouragement to repeat after listening
+    const repeatNote = document.createElement('div');
+    repeatNote.style.fontSize = "0.75rem";
+    repeatNote.style.marginTop = "8px";
+    repeatNote.style.backgroundColor = "#fff1dc";
+    repeatNote.style.borderRadius = "30px";
+    repeatNote.style.padding = "5px";
+    repeatNote.innerHTML = "🗣️ Remember: Listen, then repeat the sentence out loud before ticking the box!";
+    document.getElementById('tickActivity').appendChild(repeatNote);
+    
+    // Intro welcome message
+    window.addEventListener('load', () => {
+        speakText("Welcome to pages 12 and 13. Listen to the story, practice numbers, tick the boxes, ask and answer, and act out scene four!", 0.9);
+    });
+</script>
+</body>
+</html>

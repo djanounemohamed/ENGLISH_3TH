@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>📘 English Unit: Pages 31–40 | My Home · Prepositions · Family Puppets · Toys · Colours · Word Search</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(145deg, #fcf8ef 0%, #f3ead9 100%);
+            font-family: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI Emoji', cursive, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .game-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #fffef7;
+            border-radius: 70px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
+            padding: 20px 28px 35px;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 5px dotted #ffb347;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2rem;
+            margin: 0;
+            background: linear-gradient(135deg, #5a6e4a, #2c5e3f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 10px 0;
+        }
+        .badge {
+            background: #ffddb0;
+            padding: 5px 18px;
+            border-radius: 60px;
+            font-weight: bold;
+            color: #aa5c1c;
+            font-size: 0.75rem;
+        }
+        .grid-2col {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 25px 0;
+        }
+        .card {
+            flex: 1;
+            min-width: 320px;
+            background: #fffaf2;
+            border-radius: 55px;
+            padding: 18px 20px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+            border: 2px solid #ffe0b5;
+        }
+        .card-title {
+            background: #ffcf95;
+            display: inline-block;
+            padding: 6px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+        }
+        button, .room-btn, .puppet-btn, .toy-card, .word-item {
+            cursor: pointer;
+            transition: 0.05s linear;
+            font-family: inherit;
+        }
+        .listen-btn {
+            background: #ffe3b9;
+            border: none;
+            border-radius: 40px;
+            padding: 6px 16px;
+            font-weight: bold;
+            margin: 5px;
+            box-shadow: 0 3px 0 #c28a4a;
+        }
+        .listen-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #c28a4a; }
+        .house-plan {
+            background: #fef0e0;
+            border-radius: 60px;
+            padding: 15px;
+            text-align: center;
+        }
+        .room-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 12px 0;
+        }
+        .room-btn {
+            background: #ffefdb;
+            border-radius: 60px;
+            padding: 10px 18px;
+            font-weight: bold;
+            box-shadow: 0 3px 0 #ccaa7a;
+        }
+        .puppet-family {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+        .puppet-btn {
+            background: #ffe0b5;
+            border-radius: 60px;
+            padding: 12px 18px;
+            text-align: center;
+            min-width: 90px;
+        }
+        .toy-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .toy-card {
+            background: #fff3e6;
+            border-radius: 50px;
+            padding: 8px 16px;
+            font-weight: bold;
+        }
+        .wordsearch-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+            background: #fff8ef;
+            padding: 10px;
+            border-radius: 40px;
+            margin: 10px 0;
+        }
+        .wordsearch-letter {
+            background: white;
+            border-radius: 30px;
+            padding: 8px 4px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: 1px solid #ffd6a0;
+        }
+        .feedback-area {
+            background: #ffefdb;
+            border-radius: 60px;
+            padding: 12px 20px;
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .reset-btn {
+            background: #ffa559;
+            border: none;
+            padding: 8px 25px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #a57c52;
+            margin-top: 20px;
+        }
+        @media (max-width: 750px) {
+            .wordsearch-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="game-wrapper">
+    <div class="header">
+        <h1>📘 Pages 31–40 · My Home · Prepositions · Family Puppets · Toys · Colours · Word Search</h1>
+        <div class="badge-row">
+            <span class="badge">🏠 p.31 Rooms & prepositions</span>
+            <span class="badge">🎭 p.32 Family puppets game</span>
+            <span class="badge">🧸 p.38-39 Favourite toys & colours</span>
+            <span class="badge">🔍 p.40 Word search</span>
+        </div>
+    </div>
+
+    <div class="grid-2col">
+        <!-- LEFT COLUMN: House, Rooms, Prepositions + Family Puppets -->
+        <div class="card">
+            <div class="card-title">🏠 p.31 · My home: rooms & prepositions</div>
+            <div class="house-plan">
+                <div class="room-grid">
+                    <button class="room-btn" data-room="kitchen">🍳 Kitchen</button>
+                    <button class="room-btn" data-room="bedroom">🛏️ Bedroom</button>
+                    <button class="room-btn" data-room="bathroom">🛁 Bathroom</button>
+                    <button class="room-btn" data-room="garden">🌻 Garden</button>
+                    <button class="room-btn" data-room="living room">🛋️ Living room</button>
+                </div>
+                <div id="prepositionArea">
+                    <p><strong>📍 Where is she/he?</strong></p>
+                    <div id="prepoQuestion">Click a room to practice "Where is...?"</div>
+                    <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+                        <button id="askWhereBtn" class="listen-btn">❓ Ask "Where is she?"</button>
+                        <button id="answerNextToBtn" class="listen-btn">➡️ Answer "next to"</button>
+                        <button id="answerOppositeBtn" class="listen-btn">⬅️ Answer "opposite"</button>
+                    </div>
+                    <div id="prepoFeedback" style="background:#fff0db; border-radius:30px; padding:6px; margin-top:8px;">💡 Ask and answer about the house! Use next to / opposite.</div>
+                </div>
+            </div>
+
+            <div class="card-title" style="margin-top: 20px;">🎭 p.32 · Family puppets game</div>
+            <div class="puppet-family">
+                <div class="puppet-btn" data-family="mum">👩 Mum</div>
+                <div class="puppet-btn" data-family="dad">👨 Dad</div>
+                <div class="puppet-btn" data-family="brother">🧑 Brother</div>
+                <div class="puppet-btn" data-family="sister">👧 Sister</div>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button id="puppetQuestionBtn" class="listen-btn">🎭 Ask "Where's my sister's bedroom?"</button>
+                <button id="puppetAnswerBtn" class="listen-btn">🗣️ Answer (next to/opposite)</button>
+            </div>
+            <div id="puppetFeedback" style="font-size:0.8rem; text-align:center; margin-top:8px;">💬 Use your paper puppets! Click to practice dialogue.</div>
+
+            <div class="card-title" style="margin-top: 20px;">🔤 p.33 · Reorder numbers & code names</div>
+            <div id="codeGame">
+                <button id="reorderCodeBtn" class="listen-btn">🔢 Reorder numbers (spell demo)</button>
+                <button id="namePictureCodeBtn" class="listen-btn">🖼️ Name the picture (code)</button>
+                <div id="codeFeedback" style="font-size:0.8rem; margin-top:6px;">✨ Activity: use the code to write words in copybook.</div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Toys, Colours, Word Search -->
+        <div class="card">
+            <div class="card-title">🧸 p.38-39 · Favourite toys & colours</div>
+            <div class="toy-grid" id="toyGrid">
+                <div class="toy-card" data-toy="robot">🤖 robot</div>
+                <div class="toy-card" data-toy="doll">🎎 doll</div>
+                <div class="toy-card" data-toy="ball">⚽ ball</div>
+                <div class="toy-card" data-toy="kite">🪁 kite</div>
+                <div class="toy-card" data-toy="car">🚗 car</div>
+                <div class="toy-card" data-toy="bike">🚲 bike</div>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                <button id="askFavToyBtn" class="listen-btn">❓ Ask "What's your favourite toy?"</button>
+                <button id="answerFavToyBtn" class="listen-btn">🎤 Answer "My favourite toy is..."</button>
+                <select id="favToySelect">
+                    <option value="robot">robot</option><option value="doll">doll</option><option value="ball">ball</option>
+                    <option value="kite">kite</option><option value="car">car</option><option value="bike">bike</option>
+                </select>
+                <button id="speakSelectedToy" class="listen-btn">🗣️ Speak my favourite</button>
+            </div>
+            <div id="toyFeedback" style="background:#fff0db; border-radius:30px; padding:6px; margin:10px 0;">💬 Ask and answer about favourite toys and colours!</div>
+
+            <div class="card-title" style="margin-top: 10px;">🎨 p.39 · Read & say correct answer + Colours</div>
+            <div id="colourSentences">
+                <div class="toy-card" data-sentence="This is a black car.">🚗 black car</div>
+                <div class="toy-card" data-sentence="This is a white ball.">⚽ white ball</div>
+                <div class="toy-card" data-sentence="This is a blue bike.">🚲 blue bike</div>
+                <div class="toy-card" data-sentence="This is a red kite.">🪁 red kite</div>
+            </div>
+            <button id="readSentenceBtn" class="listen-btn">🔊 Read sentences aloud</button>
+
+            <div class="card-title" style="margin-top: 20px;">🔍 p.40 · Word search (find 7 words)</div>
+            <div id="wordSearchGame">
+                <div class="wordsearch-grid" id="wordsearchGrid"></div>
+                <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 8px;">
+                    <button id="checkWordBtn" class="listen-btn">🔎 Check found word</button>
+                    <button id="hintWordBtn" class="listen-btn">💡 Hint</button>
+                </div>
+                <div id="wordSearchFeedback" style="font-size:0.8rem; margin-top:6px;">🔍 Find: ROBOT, BALL, DOLL, CAR, KITE, BIKE, GREEN</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feedback-area">
+        <span>⭐ Pages 31-40: Rooms, prepositions, puppets, toys, colours, word search ⭐</span>
+        <button id="globalResetBtn" class="reset-btn">🔄 Reset All Activities</button>
+    </div>
+    <footer>📘 Based on pages 31-40: My home, Where's the bedroom?, family puppets, favourite toys, read & colour, word search.</footer>
+</div>
+
+<script>
+    // ========== SPEECH ==========
+    function speakText(text, rate = 0.85) {
+        if (!window.speechSynthesis) return;
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = rate;
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // ---------- 1. ROOMS & PREPOSITIONS (p.31) ----------
+    let currentRoom = "kitchen";
+    document.querySelectorAll('.room-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentRoom = btn.getAttribute('data-room');
+            document.getElementById('prepoQuestion').innerHTML = `📍 She is in the ${currentRoom}. Where is she? (next to / opposite)`;
+            speakText(`She is in the ${currentRoom}.`, 0.8);
+        });
+    });
+    document.getElementById('askWhereBtn').onclick = () => { speakText(`Where is she?`, 0.85); document.getElementById('prepoFeedback').innerHTML = `❓ Where is she? She is in the ${currentRoom}. Answer: next to or opposite?`; };
+    document.getElementById('answerNextToBtn').onclick = () => { speakText(`She is next to the ${currentRoom === 'kitchen' ? 'living room' : 'bedroom'}.`, 0.85); document.getElementById('prepoFeedback').innerHTML = `➡️ She is next to the ${currentRoom === 'kitchen' ? 'living room' : 'bedroom'}.`; };
+    document.getElementById('answerOppositeBtn').onclick = () => { speakText(`She is opposite the ${currentRoom === 'bathroom' ? 'bedroom' : 'garden'}.`, 0.85); document.getElementById('prepoFeedback').innerHTML = `⬅️ She is opposite the ${currentRoom === 'bathroom' ? 'bedroom' : 'garden'}.`; };
+
+    // ---------- 2. FAMILY PUPPETS (p.32) ----------
+    let currentFamily = "sister";
+    document.querySelectorAll('.puppet-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentFamily = btn.getAttribute('data-family');
+            speakText(`${currentFamily} is in the bedroom.`, 0.8);
+            document.getElementById('puppetFeedback').innerHTML = `🎭 ${currentFamily} is in the bedroom. Where is ${currentFamily}'s bedroom?`;
+        });
+    });
+    document.getElementById('puppetQuestionBtn').onclick = () => { speakText(`Where's my ${currentFamily}'s bedroom?`, 0.85); document.getElementById('puppetFeedback').innerHTML = `❓ Where's ${currentFamily}'s bedroom? Answer: It's next to the living room.`; };
+    document.getElementById('puppetAnswerBtn').onclick = () => { speakText(`It's next to the living room.`, 0.85); document.getElementById('puppetFeedback').innerHTML = `✅ It's next to the living room. Great! Use your paper puppets to play!`; };
+
+    // ---------- 3. CODE & REORDER (p.33) ----------
+    document.getElementById('reorderCodeBtn').onclick = () => { speakText(`Reorder numbers: 3, 1, 2 spells C A T. Cat!`, 0.85); document.getElementById('codeFeedback').innerHTML = `🐱 Example: 3=C, 1=A, 2=T → CAT. Now write in copybook!`; };
+    document.getElementById('namePictureCodeBtn').onclick = () => { speakText(`Picture: a small animal with whiskers. Code: 3-1-2 spells CAT!`, 0.85); document.getElementById('codeFeedback').innerHTML = `🖼️ Name the picture: cat! Use code in your copybook.`; };
+
+    // ---------- 4. FAVOURITE TOYS & COLOURS (p.38-39) ----------
+    document.getElementById('askFavToyBtn').onclick = () => { speakText(`What's your favourite toy?`, 0.85); document.getElementById('toyFeedback').innerHTML = `❓ What's your favourite toy? Answer with the selector!`; };
+    document.getElementById('answerFavToyBtn').onclick = () => { const toy = document.getElementById('favToySelect').value; speakText(`My favourite toy is ${toy}.`, 0.85); document.getElementById('toyFeedback').innerHTML = `🎮 My favourite toy is ${toy}. What about you?`; };
+    document.getElementById('speakSelectedToy').onclick = () => { const toy = document.getElementById('favToySelect').value; speakText(`My favourite toy is ${toy}. It is awesome!`, 0.85); };
+    document.querySelectorAll('[data-sentence]').forEach(el => {
+        el.addEventListener('click', () => { const sentence = el.getAttribute('data-sentence'); speakText(sentence, 0.85); document.getElementById('toyFeedback').innerHTML = `📖 "${sentence}" — Read and say the correct answer!`; });
+    });
+    document.getElementById('readSentenceBtn').onclick = () => { speakText(`This is a black car. This is a white ball. This is a blue bike. This is a red kite.`, 0.85); };
+
+    // ---------- 5. WORD SEARCH (p.40) ----------
+    const wordSearchWords = ["ROBOT", "BALL", "DOLL", "CAR", "KITE", "BIKE", "GREEN"];
+    const wordSearchGrid = [
+        ['R','O','B','O','T','X'], ['B','A','L','L','Y','Z'], ['D','O','L','L','W','K'],
+        ['C','A','R','M','N','I'], ['K','I','T','E','P','T'], ['B','I','K','E','Q','E'],
+        ['G','R','E','E','N','L']
+    ];
+    let selectedLetters = [];
+    let foundWords = [];
+
+    function renderWordSearch() {
+        const container = document.getElementById('wordsearchGrid');
+        container.innerHTML = '';
+        for (let r = 0; r < wordSearchGrid.length; r++) {
+            for (let c = 0; c < wordSearchGrid[r].length; c++) {
+                const letterDiv = document.createElement('div');
+                letterDiv.className = 'wordsearch-letter';
+                letterDiv.textContent = wordSearchGrid[r][c];
+                letterDiv.dataset.row = r;
+                letterDiv.dataset.col = c;
+                letterDiv.addEventListener('click', () => {
+                    if (foundWords.includes(`${r},${c}`)) return;
+                    if (selectedLetters.some(sel => sel.row === r && sel.col === c)) {
+                        selectedLetters = selectedLetters.filter(sel => !(sel.row === r && sel.col === c));
+                        letterDiv.style.backgroundColor = 'white';
+                    } else {
+                        selectedLetters.push({ row: r, col: c, letter: wordSearchGrid[r][c] });
+                        letterDiv.style.backgroundColor = '#c8e6c1';
+                    }
+                });
+                container.appendChild(letterDiv);
+            }
+        }
+    }
+    function getSelectedWord() {
+        return selectedLetters.map(l => l.letter).join('');
+    }
+    document.getElementById('checkWordBtn').onclick = () => {
+        const selectedWord = getSelectedWord();
+        if (selectedWord.length < 2) { document.getElementById('wordSearchFeedback').innerHTML = `⚠️ Select letters first!`; return; }
+        const upperWord = selectedWord.toUpperCase();
+        if (wordSearchWords.includes(upperWord) && !foundWords.includes(upperWord)) {
+            foundWords.push(upperWord);
+            document.getElementById('wordSearchFeedback').innerHTML = `🎉 Found "${upperWord}"! ${foundWords.length}/7 words. Great!`;
+            speakText(`You found ${upperWord}!`, 0.8);
+            selectedLetters.forEach(sel => { foundWords.push(`${sel.row},${sel.col}`); });
+            selectedLetters = [];
+            renderWordSearch();
+        } else if (foundWords.includes(upperWord)) {
+            document.getElementById('wordSearchFeedback').innerHTML = `✅ "${upperWord}" already found! Keep searching.`;
+        } else {
+            document.getElementById('wordSearchFeedback').innerHTML = `❌ "${selectedWord}" is not in the word list. Try again!`;
+        }
+        if (foundWords.filter(w => wordSearchWords.includes(w)).length === wordSearchWords.length) {
+            document.getElementById('wordSearchFeedback').innerHTML = `🏆 PERFECT! You found all 7 words! 🏆`;
+            speakText(`Amazing! You found all words!`, 0.9);
+        }
+    };
+    document.getElementById('hintWordBtn').onclick = () => {
+        const remaining = wordSearchWords.filter(w => !foundWords.includes(w));
+        if (remaining.length) speakText(`Try to find: ${remaining[0]}`, 0.85);
+        document.getElementById('wordSearchFeedback').innerHTML = `💡 Hint: Look for ${remaining[0] || 'all done!'}`;
+    };
+    renderWordSearch();
+
+    // ---------- BONUS: p.34-35 phonics extra (optional, but p.35 house drawing) ----------
+    const extraPhonicsDiv = document.createElement('div');
+    extraPhonicsDiv.style.marginTop = "20px";
+    extraPhonicsDiv.innerHTML = `<div class="card-title" style="font-size:1rem;">🎨 p.35 · Draw & colour the house (colour key)</div>
+        <button id="colourKeyBtn" class="listen-btn">🏠 Colour key: roof red, walls yellow</button>
+        <div id="houseMsg">✨ Draw a house in your copybook and colour it!</div>`;
+    document.querySelector('.card:first-child').appendChild(extraPhonicsDiv);
+    document.getElementById('colourKeyBtn').onclick = () => { speakText("Colour the roof red, the walls yellow, the door brown.", 0.85); document.getElementById('houseMsg').innerHTML = "🎨 Follow the colour key in your copybook!"; };
+
+    // ---------- GLOBAL RESET ----------
+    function globalReset() {
+        window.speechSynthesis.cancel();
+        document.getElementById('prepoFeedback').innerHTML = "💡 Ask and answer about the house! Use next to / opposite.";
+        document.getElementById('puppetFeedback').innerHTML = "💬 Use your paper puppets! Click to practice dialogue.";
+        document.getElementById('codeFeedback').innerHTML = "✨ Activity: use the code to write words in copybook.";
+        document.getElementById('toyFeedback').innerHTML = "💬 Ask and answer about favourite toys and colours!";
+        document.getElementById('wordSearchFeedback').innerHTML = "🔍 Find: ROBOT, BALL, DOLL, CAR, KITE, BIKE, GREEN";
+        foundWords = [];
+        selectedLetters = [];
+        renderWordSearch();
+        speakText("All activities reset. Pages 31 to 40 ready!", 0.85);
+    }
+    document.getElementById('globalResetBtn').addEventListener('click', globalReset);
+
+    window.addEventListener('load', () => { speakText("Welcome to pages 31 to 40! Explore rooms, family puppets, toys, colours, and word search.", 0.9); });
+</script>
+</body>
+</html>

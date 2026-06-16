@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>📘 English Unit: Pages 21–30 | Story · Yes/No · Hide & Seek · Spelling · Timetable · Phonics</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(145deg, #fcf8ef 0%, #f3ead9 100%);
+            font-family: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI Emoji', cursive, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .game-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #fffef7;
+            border-radius: 70px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
+            padding: 20px 28px 35px;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 5px dotted #ffb347;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2rem;
+            margin: 0;
+            background: linear-gradient(135deg, #5a6e4a, #2c5e3f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 10px 0;
+        }
+        .badge {
+            background: #ffddb0;
+            padding: 5px 18px;
+            border-radius: 60px;
+            font-weight: bold;
+            color: #aa5c1c;
+            font-size: 0.75rem;
+        }
+        .grid-2col {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 25px 0;
+        }
+        .card {
+            flex: 1;
+            min-width: 320px;
+            background: #fffaf2;
+            border-radius: 55px;
+            padding: 18px 20px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+            border: 2px solid #ffe0b5;
+        }
+        .card-title {
+            background: #ffcf95;
+            display: inline-block;
+            padding: 6px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+        }
+        button, .scene-card, .word-card, .timetable-slot {
+            cursor: pointer;
+            transition: 0.05s linear;
+            font-family: inherit;
+        }
+        .listen-btn {
+            background: #ffe3b9;
+            border: none;
+            border-radius: 40px;
+            padding: 6px 16px;
+            font-weight: bold;
+            margin: 5px;
+            box-shadow: 0 3px 0 #c28a4a;
+        }
+        .listen-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #c28a4a; }
+        .story-scene {
+            background: #fdf5e6;
+            border-radius: 50px;
+            padding: 12px;
+            margin: 12px 0;
+            border-left: 8px solid #ffb347;
+        }
+        .yesno-item {
+            background: #fff3e6;
+            border-radius: 50px;
+            padding: 8px 15px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .yesno-buttons button {
+            background: #e0f0e8;
+            border: none;
+            border-radius: 30px;
+            padding: 4px 12px;
+            margin: 0 4px;
+            font-weight: bold;
+        }
+        .hide-seek-area {
+            background: #eef4e8;
+            border-radius: 60px;
+            padding: 15px;
+            text-align: center;
+        }
+        .object-hidden {
+            display: inline-block;
+            background: #ffefcf;
+            border-radius: 50px;
+            padding: 12px 20px;
+            margin: 6px;
+            cursor: pointer;
+        }
+        .speed-word {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: white;
+            border-radius: 60px;
+            padding: 15px;
+            text-align: center;
+            margin: 12px 0;
+        }
+        .intruder-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .intruder-card {
+            background: #ffe0c0;
+            border-radius: 50px;
+            padding: 10px 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .timetable-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .timetable-slot {
+            background: #fffbee;
+            border-radius: 40px;
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ffdaa0;
+        }
+        .phonic-card {
+            background: #fef2e0;
+            border-radius: 60px;
+            padding: 12px;
+            text-align: center;
+            margin: 8px 0;
+        }
+        .feedback-area {
+            background: #ffefdb;
+            border-radius: 60px;
+            padding: 12px 20px;
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .reset-btn {
+            background: #ffa559;
+            border: none;
+            padding: 8px 25px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #a57c52;
+            margin-top: 20px;
+        }
+        @media (max-width: 750px) {
+            .timetable-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="game-container">
+    <div class="header">
+        <h1>📘 Pages 21 → 30 · Story · Yes/No · Hide & Seek · Spelling · Timetable · Phonics</h1>
+        <div class="badge-row">
+            <span class="badge">🎭 p.21 Story + p.22 Yes/No</span>
+            <span class="badge">🕵️ p.22 Hide & Seek</span>
+            <span class="badge">⚡ p.24 Speed spell + Intruder</span>
+            <span class="badge">📅 p.25 Timetable</span>
+            <span class="badge">🔤 p.27 Phonics b, h, k, m</span>
+        </div>
+    </div>
+
+    <div class="grid-2col">
+        <!-- LEFT COLUMN: Story, Yes/No, Hide & Seek, Speed Spell + Intruder -->
+        <div class="card">
+            <div class="card-title">🎧 p.21-22 · Story & Yes/No</div>
+            <div class="story-scene" id="storyBox">
+                <strong>🌟 Scene 1:</strong> Lily has a green pen. The pen is on the table.<br>
+                <strong>🌟 Scene 2:</strong> Tom has a red pencil. The pencil is in the schoolbag.<br>
+                <strong>🌟 Scene 3:</strong> The eraser is under the chair. Where is the book? It is in the schoolbag!
+            </div>
+            <button id="listenFullStory" class="listen-btn">🔊 Listen to story</button>
+            <div id="yesNoArea">
+                <div class="yesno-item"><span>a. The pen is green.</span><div class="yesno-buttons"><button data-q="a" data-ans="yes">✅ Yes</button><button data-q="a" data-ans="no">❌ No</button></div></div>
+                <div class="yesno-item"><span>b. The pen is under the chair.</span><div><button data-q="b" data-ans="yes">Yes</button><button data-q="b" data-ans="no">No</button></div></div>
+                <div class="yesno-item"><span>c. The pencil is red.</span><div><button data-q="c" data-ans="yes">Yes</button><button data-q="c" data-ans="no">No</button></div></div>
+                <div class="yesno-item"><span>d. The eraser is on the table.</span><div><button data-q="d" data-ans="yes">Yes</button><button data-q="d" data-ans="no">No</button></div></div>
+                <div class="yesno-item"><span>e. The book is in the schoolbag.</span><div><button data-q="e" data-ans="yes">Yes</button><button data-q="e" data-ans="no">No</button></div></div>
+            </div>
+            <div id="yesnoFeedback" style="background:#fff0db; border-radius:30px; padding:6px; margin-top:8px;">💡 Listen to the story then answer Yes or No.</div>
+
+            <div class="card-title" style="margin-top: 20px;">🕵️ p.22 · Hide, Seek & Find (Play with friends)</div>
+            <div class="hide-seek-area" id="hideSeekGame">
+                <p>🔍 Find the hidden school objects!</p>
+                <div id="objectsContainer">
+                    <span class="object-hidden" data-obj="pen">✒️ Pen</span>
+                    <span class="object-hidden" data-obj="pencil">✏️ Pencil</span>
+                    <span class="object-hidden" data-obj="eraser">🧽 Eraser</span>
+                    <span class="object-hidden" data-obj="book">📘 Book</span>
+                </div>
+                <button id="hideRandomBtn" class="listen-btn">🙈 Hide a random object</button>
+                <button id="revealBtn" class="listen-btn">🔎 Reveal & find</button>
+                <div id="hideSeekFeedback" style="margin-top:8px;">✨ One object is hidden! Can you find it? Click on the objects to seek.</div>
+            </div>
+
+            <div class="card-title" style="margin-top: 20px;">⚡ p.24 · Read & speed-spell + Intruder game</div>
+            <div id="speedSpellZone">
+                <div class="speed-word" id="currentSpellWord">cat</div>
+                <button id="nextSpellWordBtn" class="listen-btn">🎲 Next word</button>
+                <button id="speakSpellWordBtn" class="listen-btn">🔊 Listen & spell</button>
+                <div id="spellFeedback" style="font-size:0.8rem;">💬 Say the word, then spell it fast!</div>
+            </div>
+            <div style="margin-top: 15px;"><strong>🚨 Find the intruder:</strong>
+                <div class="intruder-grid" id="intruderGrid"></div>
+                <div id="intruderFeedback" style="font-size:0.8rem; margin-top:6px;">Click on the word that is different!</div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Timetable (p.25) + Phonics (p.27) + Songs -->
+        <div class="card">
+            <div class="card-title">📅 p.25 · My school timetable (play with friends)</div>
+            <div id="timetableArea">
+                <div class="timetable-grid" id="timetableGrid"></div>
+                <button id="speakTimetableBtn" class="listen-btn">🔊 Listen to timetable example</button>
+                <div id="timetableFeedback" style="margin-top:8px;">💡 Draw & colour your own timetable in copybook!</div>
+            </div>
+
+            <div class="card-title" style="margin-top: 20px;">🔤 p.27 · Phonics: letters b, h, k, m</div>
+            <div class="phonic-card">
+                <div style="display: flex; gap: 15px; justify-content: center; font-size: 2rem; font-weight: bold;">🅱️ 🄷 🄺 🄼</div>
+                <div id="phonicsWords">
+                    <button class="listen-btn" data-phonic="b">🐻 ball</button>
+                    <button class="listen-btn" data-phonic="h">🏠 hat</button>
+                    <button class="listen-btn" data-phonic="k">🪁 kite</button>
+                    <button class="listen-btn" data-phonic="m">🐒 monkey</button>
+                </div>
+                <button id="randomPhonicBtn" class="listen-btn">🎲 Random phonic sound</button>
+                <div id="phonicFeedback" style="margin-top:8px;">🔊 Click a letter or word to hear the sound. Trace letters in the air!</div>
+            </div>
+
+            <div class="card-title" style="margin-top: 20px;">🎵 Listen & sing (p.27 songs)</div>
+            <div style="background:#fef0e0; border-radius: 50px; padding: 12px; text-align:center;">
+                <button id="singPhonicsSong" class="listen-btn">🎤 Sing 'b, h, k, m' song</button>
+                <button id="singAlphabetSong" class="listen-btn">🎵 Alphabet song</button>
+                <div id="songMsg">🎶 "B says buh, H says huh..."</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feedback-area">
+        <span>⭐ Pages 21-30: Story comprehension, hide & seek, spelling race, intruder, timetable, phonics ⭐</span>
+        <button id="globalResetBtn" class="reset-btn">🔄 Reset all activities</button>
+    </div>
+    <footer>📘 Act.8-16 (p21-30): listen to story, yes/no, hide & seek, speed spell, intruder, timetable, b-h-k-m phonics.</footer>
+</div>
+
+<script>
+    // ========== SPEECH ==========
+    function speakText(text, rate = 0.85) {
+        if (!window.speechSynthesis) return;
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = rate;
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // ---------- 1. STORY & YES/NO (p21-22) ----------
+    const storyText = "The pen is green. The pen is on the table. The pencil is red. The eraser is under the chair. The book is in the schoolbag.";
+    document.getElementById('listenFullStory').onclick = () => speakText(storyText, 0.85);
+    const correctAnswers = { a: "yes", b: "no", c: "yes", d: "no", e: "yes" };
+    const yesnoBtns = document.querySelectorAll('#yesNoArea button');
+    yesnoBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const q = btn.getAttribute('data-q');
+            const ans = btn.getAttribute('data-ans');
+            const isCorrect = (ans === correctAnswers[q]);
+            const feedbackDiv = document.getElementById('yesnoFeedback');
+            if (isCorrect) {
+                feedbackDiv.innerHTML = `✅ Correct! ${q.toUpperCase()}. Good job!`;
+                speakText(`Correct!`, 0.8);
+            } else {
+                feedbackDiv.innerHTML = `❌ Oops! ${q.toUpperCase()} is ${correctAnswers[q] === 'yes' ? 'Yes' : 'No'}. Listen again.`;
+                speakText(`Not correct. The answer is ${correctAnswers[q]}.`, 0.8);
+            }
+        });
+    });
+
+    // ---------- 2. HIDE, SEEK & FIND (p.22) ----------
+    let hiddenObject = null;
+    const objects = ['pen', 'pencil', 'eraser', 'book'];
+    function resetHideSeek() { hiddenObject = null; document.getElementById('hideSeekFeedback').innerHTML = "✨ No object hidden yet. Press 'Hide a random object'!"; }
+    document.getElementById('hideRandomBtn').onclick = () => {
+        const rand = objects[Math.floor(Math.random() * objects.length)];
+        hiddenObject = rand;
+        speakText(`Hide the ${rand}. Can you find it?`, 0.85);
+        document.getElementById('hideSeekFeedback').innerHTML = `🙈 An object is hidden! Click on the correct object to find it.`;
+    };
+    document.querySelectorAll('.object-hidden').forEach(el => {
+        el.addEventListener('click', () => {
+            const obj = el.dataset.obj;
+            if (hiddenObject === obj) {
+                document.getElementById('hideSeekFeedback').innerHTML = `🎉 You found the ${obj}! Great seeker! +1 point!`;
+                speakText(`You found the ${obj}! Well done!`, 0.85);
+                hiddenObject = null;
+            } else if (hiddenObject) {
+                document.getElementById('hideSeekFeedback').innerHTML = `❌ Not the ${obj}. The hidden object is ${hiddenObject}. Keep seeking!`;
+                speakText(`Not that one.`, 0.7);
+            } else {
+                document.getElementById('hideSeekFeedback').innerHTML = `🔍 No object hidden. Press "Hide" first!`;
+            }
+        });
+    });
+    document.getElementById('revealBtn').onclick = () => { if(hiddenObject) { speakText(`The hidden object is ${hiddenObject}.`,0.8); document.getElementById('hideSeekFeedback').innerHTML = `🔎 The hidden object is ${hiddenObject}!`; } else document.getElementById('hideSeekFeedback').innerHTML = `🤷 No hidden object.`; };
+
+    // ---------- 3. SPEED SPELL (p.24) ----------
+    const spellWords = ["cat", "dog", "sun", "ball", "fish", "bird", "red", "blue"];
+    let currentSpellIdx = 0;
+    function updateSpellWord() { document.getElementById('currentSpellWord').innerText = spellWords[currentSpellIdx]; }
+    document.getElementById('nextSpellWordBtn').onclick = () => { currentSpellIdx = (currentSpellIdx + 1) % spellWords.length; updateSpellWord(); speakText(spellWords[currentSpellIdx], 0.8); document.getElementById('spellFeedback').innerHTML = `🔊 Listen and spell: ${spellWords[currentSpellIdx]}`; };
+    document.getElementById('speakSpellWordBtn').onclick = () => { const w = spellWords[currentSpellIdx]; speakText(`${w}. Spell it: ${w.split('').join(', ')}`, 0.8); document.getElementById('spellFeedback').innerHTML = `⚡ Say it fast: ${w} → ${w.split('').join('-')}`; };
+    updateSpellWord();
+
+    // ---------- 4. INTRUDER GAME (p.24) ----------
+    const intruderSets = [
+        { words: ["apple", "banana", "cherry", "car"], intruderIndex: 3, reason: "car is not a fruit" },
+        { words: ["red", "blue", "green", "run"], intruderIndex: 3, reason: "run is not a colour" },
+        { words: ["cat", "dog", "rabbit", "table"], intruderIndex: 3, reason: "table is not an animal" },
+        { words: ["happy", "sad", "big", "jump"], intruderIndex: 3, reason: "jump is not a feeling" }
+    ];
+    let currentIntruderSet = 0;
+    function renderIntruder() {
+        const set = intruderSets[currentIntruderSet];
+        const container = document.getElementById('intruderGrid');
+        container.innerHTML = '';
+        set.words.forEach((word, idx) => {
+            const card = document.createElement('div'); card.className = 'intruder-card'; card.innerText = word;
+            card.dataset.idx = idx;
+            card.addEventListener('click', () => {
+                if (idx === set.intruderIndex) {
+                    document.getElementById('intruderFeedback').innerHTML = `✅ Correct! "${word}" is the intruder because ${set.reason}. Great!`;
+                    speakText(`Correct! ${word} is the intruder.`, 0.85);
+                    currentIntruderSet = (currentIntruderSet + 1) % intruderSets.length;
+                    renderIntruder();
+                } else {
+                    document.getElementById('intruderFeedback').innerHTML = `❌ Not the intruder. Try again! The intruder is different.`;
+                    speakText(`No, keep looking.`, 0.7);
+                }
+            });
+            container.appendChild(card);
+        });
+    }
+    renderIntruder();
+
+    // ---------- 5. TIMETABLE (p.25) ----------
+    const sampleTimetable = [
+        { time: "8:30", mon: "English", tue: "Maths", wed: "Arabic", thu: "Science" },
+        { time: "9:30", mon: "Maths", tue: "PE", wed: "English", thu: "Art" },
+        { time: "10:30", mon: "Break", tue: "Break", wed: "Break", thu: "Break" },
+        { time: "11:00", mon: "Science", tue: "English", wed: "PE", thu: "Music" }
+    ];
+    function renderTimetable() {
+        const grid = document.getElementById('timetableGrid');
+        grid.innerHTML = '<div class="timetable-slot"><strong>Time</strong></div><div class="timetable-slot"><strong>Mon</strong></div><div class="timetable-slot"><strong>Tue</strong></div><div class="timetable-slot"><strong>Wed</strong></div><div class="timetable-slot"><strong>Thu</strong></div>';
+        sampleTimetable.forEach(row => {
+            grid.innerHTML += `<div class="timetable-slot">${row.time}</div><div class="timetable-slot">${row.mon}</div><div class="timetable-slot">${row.tue}</div><div class="timetable-slot">${row.wed}</div><div class="timetable-slot">${row.thu}</div>`;
+        });
+    }
+    renderTimetable();
+    document.getElementById('speakTimetableBtn').onclick = () => { speakText("On Monday at 8:30 English, then Maths, break, Science. Tuesday Maths, PE, break, English.",0.85); };
+
+    // ---------- 6. PHONICS b, h, k, m (p.27) ----------
+    const phonicsMap = { b: "b says buh, like ball", h: "h says huh, like hat", k: "k says kuh, like kite", m: "m says mmm, like monkey" };
+    document.querySelectorAll('[data-phonic]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const ph = btn.getAttribute('data-phonic');
+            speakText(phonicsMap[ph], 0.8);
+            document.getElementById('phonicFeedback').innerHTML = `🔊 ${phonicsMap[ph]}`;
+        });
+    });
+    document.getElementById('randomPhonicBtn').onclick = () => {
+        const letters = ['b','h','k','m'];
+        const rand = letters[Math.floor(Math.random()*letters.length)];
+        speakText(phonicsMap[rand], 0.8);
+        document.getElementById('phonicFeedback').innerHTML = `🎲 Random: ${phonicsMap[rand]}. Trace the letter in the air!`;
+    };
+    document.getElementById('singPhonicsSong').onclick = () => { speakText("B says buh, B says buh, ball and boy. H says huh, H says huh, hat and house. K says kuh, kite and key. M says mmm, monkey and me!",0.85); document.getElementById('songMsg').innerHTML = "🎶 Phonics song played! Sing along!"; };
+    document.getElementById('singAlphabetSong').onclick = () => { speakText("A B C D E F G, H I J K L M N O P, Q R S T U V, W X Y Z. Now I know my ABCs!",0.85); document.getElementById('songMsg').innerHTML = "🎤 Alphabet song!"; };
+
+    // ---------- 7. BONUS: match activity (p.23) quick add: listen and match in copybook - simple version
+    const matchExtraDiv = document.createElement('div');
+    matchExtraDiv.style.marginTop = "20px";
+    matchExtraDiv.innerHTML = `<div class="card-title" style="font-size:1rem;">📌 p.23 Listen & match (extra practice)</div><div style="display:flex; gap:8px; flex-wrap:wrap;"><button id="listenMatchEx" class="listen-btn">🔊 Listen (pen, book, chair)</button><div id="matchExFeedback">Click listen, then match in your copybook.</div></div>`;
+    document.querySelector('.card:first-child').appendChild(matchExtraDiv);
+    document.getElementById('listenMatchEx').onclick = () => { speakText("Match the word to the picture: pen, book, chair.", 0.8); document.getElementById('matchExFeedback').innerHTML = "📖 Now draw lines in your copybook!"; };
+
+    // ---------- GLOBAL RESET ----------
+    function globalReset() {
+        window.speechSynthesis.cancel();
+        // reset yes/no feedback
+        document.getElementById('yesnoFeedback').innerHTML = "💡 Listen to the story then answer Yes or No.";
+        // reset hide & seek
+        resetHideSeek();
+        // reset intruder game
+        currentIntruderSet = 0;
+        renderIntruder();
+        document.getElementById('intruderFeedback').innerHTML = "Click on the word that is different!";
+        // reset speed spell
+        currentSpellIdx = 0; updateSpellWord();
+        document.getElementById('spellFeedback').innerHTML = "💬 Say the word, then spell it fast!";
+        // reset timetable feedback
+        document.getElementById('timetableFeedback').innerHTML = "💡 Draw & colour your own timetable in copybook!";
+        // reset phonics
+        document.getElementById('phonicFeedback').innerHTML = "🔊 Click a letter or word to hear the sound.";
+        document.getElementById('songMsg').innerHTML = "🎶 'B says buh, H says huh...'";
+        document.getElementById('hideSeekFeedback').innerHTML = "✨ No object hidden. Press 'Hide a random object'!";
+        speakText("All activities reset. Pages 21 to 30 ready!", 0.85);
+    }
+    document.getElementById('globalResetBtn').addEventListener('click', globalReset);
+
+    // Welcome intro
+    window.addEventListener('load', () => { speakText("Welcome to pages 21 to 30! Story, Yes No, Hide and Seek, Speed Spell, Intruder, Timetable and Phonics.",0.9); });
+</script>
+</body>
+</html>

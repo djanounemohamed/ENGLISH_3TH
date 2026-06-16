@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>📘 Page 8 | Greetings · Listen & Colour | English with Friends</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            user-select: none; /* smooth drag-free */
+        }
+
+        body {
+            background: linear-gradient(145deg, #e0f0fa 0%, #c2e0f5 100%);
+            font-family: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI Emoji', cursive, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .game-container {
+            max-width: 1200px;
+            width: 100%;
+            background: #fffef7;
+            border-radius: 85px 85px 75px 75px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2), inset 0 1px 4px rgba(255, 255, 200, 0.8);
+            overflow: hidden;
+            padding: 20px 25px 35px;
+            transition: all 0.2s;
+        }
+
+        .page-header {
+            text-align: center;
+            border-bottom: 5px dotted #ffb347;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            margin: 0;
+            background: linear-gradient(135deg, #2c7a4d, #1e5a3a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .badge-p8 {
+            background: #ffddb0;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 60px;
+            font-weight: bold;
+            color: #aa5c1c;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+
+        .two-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .col {
+            flex: 1;
+            min-width: 280px;
+            background: #fff8f0;
+            border-radius: 65px;
+            padding: 20px 18px;
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+            border: 2px solid #ffe0b5;
+            transition: transform 0.2s;
+        }
+
+        .activity-title {
+            background: #ffcf95;
+            display: inline-block;
+            padding: 8px 28px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            text-align: center;
+            width: auto;
+        }
+
+        /* Friend zone styles */
+        .friend-zone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .friends-pair {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .friend-card {
+            background: white;
+            border-radius: 60px;
+            padding: 15px 20px;
+            text-align: center;
+            width: 180px;
+            box-shadow: 0 8px 0 #c2a575;
+            border: 2px solid #ffbc70;
+        }
+
+        .avatar {
+            font-size: 4rem;
+        }
+
+        .friend-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            background: #ffebcd;
+            border-radius: 30px;
+            padding: 4px;
+        }
+
+        .chat-bubble {
+            background: #fef2df;
+            border-radius: 30px;
+            padding: 8px;
+            margin: 12px 0;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .listen-do-btn {
+            background: #ffe3b9;
+            border: none;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 40px;
+            margin: 5px;
+            cursor: pointer;
+            box-shadow: 0 3px 0 #b97f48;
+            transition: 0.1s;
+        }
+
+        .listen-do-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #b97f48;
+        }
+
+        .instruction-do {
+            background: #e7f0fa;
+            border-radius: 50px;
+            padding: 12px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Colouring activity */
+        .colouring-area {
+            text-align: center;
+        }
+
+        .word-card {
+            background: #fff3e0;
+            border-radius: 70px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: inset 0 0 0 3px white, 0 5px 12px rgba(0,0,0,0.1);
+        }
+
+        .word-display {
+            font-size: 3rem;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 4px;
+            background: white;
+            padding: 20px;
+            border-radius: 60px;
+            margin: 10px 0;
+            transition: background-color 0.1s;
+            cursor: pointer;
+            border: 2px dashed #ffb058;
+        }
+
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+
+        .color-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+            border: 3px solid white;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: 0.05s linear;
+        }
+
+        .color-btn:active {
+            transform: scale(0.9);
+        }
+
+        .color-label {
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        .reset-colour-btn {
+            background: #f1c38f;
+            border: none;
+            padding: 6px 20px;
+            border-radius: 40px;
+            margin-top: 12px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .score-feedback {
+            background: #ffe2c4;
+            border-radius: 60px;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .badge-score {
+            background: #f5ac6e;
+            padding: 5px 20px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .restart-btn {
+            background: #ffa559;
+            border: none;
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            color: white;
+            box-shadow: 0 3px 0 #8b4b1f;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.7rem;
+            color: #a57c52;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="game-container">
+    <div class="page-header">
+        <h1>🎨 Page 8 · Do the same & Colour Hello/Goodbye</h1>
+        <div class="badge-p8">📖 Activity 3 & 4: Listen, look, do with a friend + Colour in copybook</div>
+        <p style="margin-top: 8px;">✨ Click on speakers to listen, repeat with a friend (or avatar), and colour the words! ✨</p>
+    </div>
+
+    <div class="two-columns">
+        <!-- LEFT COLUMN: Activity 3 - Listen, look and do the same with your friend -->
+        <div class="col">
+            <div class="activity-title">👥 3. Listen, look & do the same</div>
+            <div class="friend-zone">
+                <div class="friends-pair">
+                    <!-- Friend 1: Maya -->
+                    <div class="friend-card">
+                        <div class="avatar">👧🏽</div>
+                        <div class="friend-name">Maya</div>
+                        <div class="chat-bubble" id="mayaSpeech">"Hello!"</div>
+                        <button class="listen-do-btn" data-friend="maya" data-phrase="Hello!">🔊 Listen to Maya</button>
+                    </div>
+                    <!-- Friend 2: Leo -->
+                    <div class="friend-card">
+                        <div class="avatar">🧒🏼</div>
+                        <div class="friend-name">Leo</div>
+                        <div class="chat-bubble" id="leoSpeech">"Goodbye!"</div>
+                        <button class="listen-do-btn" data-friend="leo" data-phrase="Goodbye!">🔊 Listen to Leo</button>
+                    </div>
+                </div>
+                <div class="instruction-do">
+                    🗣️ <strong>Do the same with your friend!</strong> Click on a speaker, listen, then repeat aloud.<br>
+                    🎭 You can also click "🎭 Do the same" to pretend you are the friend.
+                </div>
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <button id="doSameMayaBtn" class="listen-do-btn" style="background:#b5dcb0;">🎭 Do same as Maya</button>
+                    <button id="doSameLeoBtn" class="listen-do-btn" style="background:#b5dcb0;">🎭 Do same as Leo</button>
+                </div>
+                <div id="doSameFeedback" style="text-align: center; margin-top: 15px; font-weight: bold; background:#fffaec; border-radius: 50px; padding: 8px;">
+                    💬 Click "Do same" and say the phrase to your partner!
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Activity 4 - Read and colour 'Hello' and 'Good bye' in your copybook -->
+        <div class="col">
+            <div class="activity-title">🖍️ 4. Read & colour Hello / Good bye</div>
+            <div class="colouring-area">
+                <div class="word-card">
+                    <div style="font-weight: bold;">✨ Read the word ✨</div>
+                    <div id="helloWord" class="word-display" data-word="Hello">Hello</div>
+                    <div id="goodbyeWord" class="word-display" data-word="Goodbye">Goodbye</div>
+                </div>
+                <div>
+                    <p>🎨 Choose a colour and click on the word to colour it (like your copybook!)</p>
+                    <div class="color-palette" id="colorPalette">
+                        <!-- colors added via JS for flexibility -->
+                    </div>
+                    <button id="resetColoursBtn" class="reset-colour-btn">🧽 Reset colours (white)</button>
+                    <div style="font-size: 0.8rem; margin-top: 10px;">💡 Tip: Colour 'Hello' and 'Goodbye' with your favourite colours!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback & Score / Progress section -->
+    <div class="score-feedback">
+        <div class="badge-score">🎯 Colouring fun! </div>
+        <div id="globalMessage">🌈 Click on any word to colour it! Use the palette.</div>
+        <button id="resetAllGame" class="restart-btn">🔄 Reset All Activities</button>
+    </div>
+    <footer>
+        📘 Based on page 8: "Listen, look and do the same with your friend" & "Read and colour 'Hello' and 'Good bye' in your copybook"<br>
+        🗣️ Use the listen buttons, repeat aloud, and colour the greeting words!
+    </footer>
+</div>
+
+<script>
+    // ========== PAGE 8 INTERACTIVE GAME ==========
+    // Speech synthesis helper
+    function speakText(text, lang = 'en-US', rate = 0.85) {
+        if (!window.speechSynthesis) {
+            console.warn("Speech not supported");
+            return;
+        }
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = rate;
+        utterance.pitch = 1.1;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // ---------- ACTIVITY 3: Listen & Do the same with friend ----------
+    // Set up listening buttons for Maya and Leo
+    const listenMayaBtn = document.querySelector('[data-friend="maya"]');
+    const listenLeoBtn = document.querySelector('[data-friend="leo"]');
+    const mayaBubble = document.getElementById('mayaSpeech');
+    const leoBubble = document.getElementById('leoSpeech');
+    const doSameMaya = document.getElementById('doSameMayaBtn');
+    const doSameLeo = document.getElementById('doSameLeoBtn');
+    const doSameFeedback = document.getElementById('doSameFeedback');
+
+    // Greeting variations (to make it natural)
+    const mayaPhrases = ["Hello!", "Hi there!", "Good morning!"];
+    const leoPhrases = ["Goodbye!", "See you later!", "Bye bye!"];
+
+    let currentMayaPhrase = "Hello!";
+    let currentLeoPhrase = "Goodbye!";
+
+    function updateBubbles() {
+        mayaBubble.textContent = `"${currentMayaPhrase}"`;
+        leoBubble.textContent = `"${currentLeoPhrase}"`;
+        // update data attributes for listen buttons
+        listenMayaBtn.setAttribute('data-phrase', currentMayaPhrase);
+        listenLeoBtn.setAttribute('data-phrase', currentLeoPhrase);
+    }
+
+    // Randomly change phrases for fun, but keep greetings friendly
+    function refreshFriendPhrases() {
+        const randomMaya = mayaPhrases[Math.floor(Math.random() * mayaPhrases.length)];
+        const randomLeo = leoPhrases[Math.floor(Math.random() * leoPhrases.length)];
+        currentMayaPhrase = randomMaya;
+        currentLeoPhrase = randomLeo;
+        updateBubbles();
+    }
+
+    // Listen buttons
+    listenMayaBtn.addEventListener('click', () => {
+        const phrase = listenMayaBtn.getAttribute('data-phrase');
+        speakText(phrase, 'en-US', 0.85);
+        doSameFeedback.innerHTML = `👂 You listened to Maya: "${phrase}". Now do the same with your friend!`;
+    });
+    listenLeoBtn.addEventListener('click', () => {
+        const phrase = listenLeoBtn.getAttribute('data-phrase');
+        speakText(phrase, 'en-US', 0.85);
+        doSameFeedback.innerHTML = `👂 You listened to Leo: "${phrase}". Repeat and do the same!`;
+    });
+
+    // "Do the same" buttons: simulate doing the action with a friend
+    doSameMaya.addEventListener('click', () => {
+        const phrase = currentMayaPhrase;
+        speakText(`Now you say ${phrase} like Maya.`, 'en-US', 0.9);
+        doSameFeedback.innerHTML = `🎭 You are doing the same as Maya! Say "${phrase}" to your friend. Great job! +1 friend point 🌟`;
+        // visual celebration
+        const mayaCard = document.querySelector('.friend-card:first-child');
+        mayaCard.style.transform = "scale(1.02)";
+        setTimeout(() => { mayaCard.style.transform = ""; }, 200);
+    });
+    doSameLeo.addEventListener('click', () => {
+        const phrase = currentLeoPhrase;
+        speakText(`Now say ${phrase} like Leo.`, 'en-US', 0.9);
+        doSameFeedback.innerHTML = `🎭 You are doing the same as Leo! Say "${phrase}" to your friend. Excellent repetition! 🌟`;
+        const leoCard = document.querySelectorAll('.friend-card')[1];
+        leoCard.style.transform = "scale(1.02)";
+        setTimeout(() => { leoCard.style.transform = ""; }, 200);
+    });
+
+    // Optional: change phrases every 20 seconds for variety
+    setInterval(() => {
+        refreshFriendPhrases();
+        doSameFeedback.innerHTML = doSameFeedback.innerHTML + " (New phrases!)";
+        setTimeout(() => {
+            if(doSameFeedback.innerHTML.includes("New phrases!"))
+                doSameFeedback.innerHTML = "💬 Click 'Listen' or 'Do the same' with Maya and Leo!";
+        }, 3000);
+    }, 25000);
+
+    // ---------- ACTIVITY 4: COLOURING HELLO & GOODBYE (copybook style) ----------
+    const helloDiv = document.getElementById('helloWord');
+    const goodbyeDiv = document.getElementById('goodbyeWord');
+    const resetColoursBtn = document.getElementById('resetColoursBtn');
+    const globalMsg = document.getElementById('globalMessage');
+
+    // Color palette data
+    const colors = [
+        { name: "Red", code: "#FFB3BA" },  // pastel red
+        { name: "Blue", code: "#BAE1FF" },
+        { name: "Yellow", code: "#FFFFBA" },
+        { name: "Green", code: "#BAFFC9" },
+        { name: "Orange", code: "#FFD8B1" },
+        { name: "Purple", code: "#E0BBE4" },
+        { name: "Pink", code: "#FFC0CB" },
+        { name: "Sky", code: "#C0E0FF" }
+    ];
+
+    const paletteContainer = document.getElementById('colorPalette');
+    let selectedColor = "#FFB3BA"; // default red
+
+    // Build palette buttons
+    colors.forEach(col => {
+        const btnWrapper = document.createElement('div');
+        btnWrapper.style.display = 'flex';
+        btnWrapper.style.flexDirection = 'column';
+        btnWrapper.style.alignItems = 'center';
+        const colorBtn = document.createElement('div');
+        colorBtn.className = 'color-btn';
+        colorBtn.style.backgroundColor = col.code;
+        colorBtn.setAttribute('data-color', col.code);
+        colorBtn.setAttribute('data-name', col.name);
+        colorBtn.addEventListener('click', (e) => {
+            selectedColor = col.code;
+            // highlight selection
+            document.querySelectorAll('.color-btn').forEach(btn => {
+                btn.style.border = "3px solid white";
+                btn.style.boxShadow = "0 3px 8px rgba(0,0,0,0.2)";
+            });
+            colorBtn.style.border = "4px solid #2c3e66";
+            colorBtn.style.boxShadow = "0 0 0 2px gold";
+            globalMsg.innerHTML = `🎨 Selected colour: ${col.name}. Now click on "Hello" or "Goodbye" to colour!`;
+        });
+        const label = document.createElement('div');
+        label.className = 'color-label';
+        label.textContent = col.name;
+        btnWrapper.appendChild(colorBtn);
+        btnWrapper.appendChild(label);
+        paletteContainer.appendChild(btnWrapper);
+    });
+    // Set default selected highlight
+    const firstColor = document.querySelector('.color-btn');
+    if (firstColor) firstColor.style.border = "4px solid #2c3e66";
+
+    // Function to colour a word element
+    function colourWord(element, colorCode) {
+        element.style.backgroundColor = colorCode;
+        // add a playful border
+        element.style.transition = "0.1s";
+        // Save to localStorage if we want? not necessary.
+    }
+
+    helloDiv.addEventListener('click', () => {
+        colourWord(helloDiv, selectedColor);
+        globalMsg.innerHTML = `✅ 'Hello' coloured! You used the selected colour. Great copybook style! 🖍️`;
+        speakText(`Hello coloured in your copybook`, 'en-US', 0.8);
+    });
+
+    goodbyeDiv.addEventListener('click', () => {
+        colourWord(goodbyeDiv, selectedColor);
+        globalMsg.innerHTML = `✅ 'Goodbye' coloured! Your copybook looks awesome! 🎨`;
+        speakText(`Goodbye coloured`, 'en-US', 0.8);
+    });
+
+    resetColoursBtn.addEventListener('click', () => {
+        helloDiv.style.backgroundColor = "white";
+        goodbyeDiv.style.backgroundColor = "white";
+        globalMsg.innerHTML = `🧽 Colours reset! Now you can colour again with new colours.`;
+        speakText(`Reset colours`, 'en-US', 0.8);
+    });
+
+    // Additional activity: Encourage reading the words aloud
+    const readHelloBtn = document.createElement('button');
+    readHelloBtn.textContent = "🔊 Read 'Hello' aloud";
+    readHelloBtn.className = "listen-do-btn";
+    readHelloBtn.style.marginTop = "10px";
+    const readGoodbyeBtn = document.createElement('button');
+    readGoodbyeBtn.textContent = "🔊 Read 'Goodbye' aloud";
+    readGoodbyeBtn.className = "listen-do-btn";
+    readGoodbyeBtn.style.marginTop = "10px";
+    const colouringArea = document.querySelector('.colouring-area');
+    const wordCardDiv = document.querySelector('.word-card');
+    wordCardDiv.appendChild(readHelloBtn);
+    wordCardDiv.appendChild(readGoodbyeBtn);
+    
+    readHelloBtn.addEventListener('click', () => {
+        speakText("Hello", 'en-US', 0.75);
+        globalMsg.innerHTML = "🗣️ You read 'Hello'! Now point to the word and repeat again.";
+    });
+    readGoodbyeBtn.addEventListener('click', () => {
+        speakText("Goodbye", 'en-US', 0.75);
+        globalMsg.innerHTML = "🗣️ You read 'Goodbye'! Great pronunciation!";
+    });
+
+    // Global reset button: reset colouring AND reset friend phrases to default, also clear feedback
+    const resetAllBtn = document.getElementById('resetAllGame');
+    resetAllBtn.addEventListener('click', () => {
+        // reset colours
+        helloDiv.style.backgroundColor = "white";
+        goodbyeDiv.style.backgroundColor = "white";
+        // reset friend phrases to basics
+        currentMayaPhrase = "Hello!";
+        currentLeoPhrase = "Goodbye!";
+        updateBubbles();
+        doSameFeedback.innerHTML = "💬 All activities reset! You can colour again and practice with friends.";
+        globalMsg.innerHTML = "✨ Game reset! Ready for new round ✨";
+        selectedColor = "#FFB3BA";
+        // reset palette highlight
+        document.querySelectorAll('.color-btn').forEach(btn => {
+            btn.style.border = "3px solid white";
+        });
+        const defaultColorBtn = Array.from(document.querySelectorAll('.color-btn')).find(btn => btn.style.backgroundColor === "rgb(255, 179, 186)");
+        if(defaultColorBtn) defaultColorBtn.style.border = "4px solid #2c3e66";
+        speakText("Reset complete. Let's practice again!", 'en-US', 0.85);
+    });
+
+    // initialization: set default white background for words
+    helloDiv.style.backgroundColor = "white";
+    goodbyeDiv.style.backgroundColor = "white";
+    helloDiv.style.cursor = "pointer";
+    goodbyeDiv.style.cursor = "pointer";
+    updateBubbles();
+
+    // additional small note: when user clicks "do the same" we add a little sound effect?
+    // Add a congratulatory message for coloring both words.
+    let helloColored = false, goodbyeColored = false;
+    function checkBothColored() {
+        if (helloDiv.style.backgroundColor !== "white" && goodbyeDiv.style.backgroundColor !== "white") {
+            globalMsg.innerHTML = "🎉 Wow! You coloured both 'Hello' and 'Goodbye'! Your copybook is beautiful! 🎉";
+            speakText("Wonderful! You finished the colouring activity.", 'en-US', 0.85);
+        }
+    }
+    // override colourWord to also check
+    const originalColourWord = colourWord;
+    window.colourWord = function(el, color) {
+        originalColourWord(el, color);
+        if (el.id === 'helloWord') helloColored = true;
+        if (el.id === 'goodbyeWord') goodbyeColored = true;
+        checkBothColored();
+    };
+    colourWord = window.colourWord;
+    // attach updated handlers
+    helloDiv.onclick = () => { colourWord(helloDiv, selectedColor); };
+    goodbyeDiv.onclick = () => { colourWord(goodbyeDiv, selectedColor); };
+
+    // Also make the 'do same' activity more interactive: add instruction for pair work
+    const instructionDiv = document.querySelector('.instruction-do');
+    const pairWorkTip = document.createElement('div');
+    pairWorkTip.style.marginTop = "8px";
+    pairWorkTip.style.fontSize = "0.8rem";
+    pairWorkTip.innerHTML = "👫 <strong>With your real friend:</strong> One says 'Hello', the other says 'Goodbye' and switch!";
+    instructionDiv.appendChild(pairWorkTip);
+    
+    // final message for listening
+    console.log("Page 8 interactive game ready: listen, repeat, do the same & colour Hello/Goodbye");
+</script>
+</body>
+</html>

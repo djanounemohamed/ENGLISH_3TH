@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>📘 Pages 10 & 11 | Complete words · Introduce yourself · Numbers</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            user-select: none; /* keep click-friendly */
+        }
+
+        body {
+            background: linear-gradient(145deg, #fdf8ec 0%, #f3efdf 100%);
+            font-family: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI Emoji', cursive, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .game-container {
+            max-width: 1300px;
+            width: 100%;
+            background: #fffef7;
+            border-radius: 70px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+            padding: 20px 28px 35px;
+            transition: all 0.2s;
+        }
+
+        .page-header {
+            text-align: center;
+            border-bottom: 5px dotted #ffb347;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            margin: 0;
+            background: linear-gradient(135deg, #4a7c59, #2c5e3f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            background: #ffddb0;
+            display: inline-block;
+            padding: 5px 18px;
+            border-radius: 60px;
+            font-weight: bold;
+            color: #aa5c1c;
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+
+        .activities-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            margin: 25px 0;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 280px;
+            background: #fffaf2;
+            border-radius: 60px;
+            padding: 18px 20px;
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.05);
+            border: 2px solid #ffe0b5;
+        }
+
+        .card-title {
+            background: #ffcf95;
+            display: inline-block;
+            padding: 6px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* word completion */
+        .word-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .word-item {
+            background: #fff3e0;
+            border-radius: 50px;
+            padding: 15px 20px;
+            text-align: center;
+            min-width: 140px;
+            box-shadow: 0 5px 0 #d9b48b;
+        }
+        .word-image {
+            font-size: 2.5rem;
+        }
+        .word-blank {
+            font-size: 1.8rem;
+            font-family: monospace;
+            font-weight: bold;
+            letter-spacing: 4px;
+            background: white;
+            border-radius: 50px;
+            padding: 8px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .letter-slot {
+            display: inline-block;
+            width: 45px;
+            text-align: center;
+            border-bottom: 3px solid #ffb058;
+            font-size: 1.6rem;
+        }
+        .missing-input {
+            width: 50px;
+            font-size: 1.4rem;
+            text-align: center;
+            border: 2px solid #ffbc6e;
+            border-radius: 30px;
+            font-family: monospace;
+            background: #fffae9;
+        }
+        .check-word-btn {
+            background: #c5e0b4;
+            border: none;
+            border-radius: 40px;
+            padding: 5px 15px;
+            font-weight: bold;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        /* name & Q&A */
+        .name-zone {
+            text-align: center;
+        }
+        .name-input-area {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+        .name-field {
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 60px;
+            border: 2px solid #ffcd94;
+            font-family: inherit;
+            text-align: center;
+        }
+        .speak-name-btn {
+            background: #ffe3b9;
+            border: none;
+            border-radius: 40px;
+            padding: 8px 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .qa-bubble {
+            background: #eef4fc;
+            border-radius: 50px;
+            padding: 12px;
+            margin: 15px 0;
+        }
+        .qa-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* numbers */
+        .numbers-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .number-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .num-card {
+            background: #ffefdb;
+            width: 70px;
+            padding: 12px 0;
+            text-align: center;
+            border-radius: 50px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.05s linear;
+            box-shadow: 0 5px 0 #bda27e;
+        }
+        .num-card:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #bda27e;
+        }
+        .listen-number-btn {
+            background: #ffcf95;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-weight: bold;
+            margin: 8px;
+            cursor: pointer;
+        }
+
+        .feedback-area {
+            background: #ffefdb;
+            border-radius: 60px;
+            padding: 12px 20px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .reset-btn {
+            background: #ffa559;
+            border: none;
+            padding: 8px 25px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #a57c52;
+            margin-top: 20px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="game-container">
+    <div class="page-header">
+        <h1>📖 Pages 10 & 11 · Words · Name · Ask & Answer · Numbers</h1>
+        <div class="badge">Activity 8 · 9 · 10 · 11 | Look, complete, listen, say & show!</div>
+    </div>
+
+    <div class="activities-grid">
+        <!-- ACTIVITY 8: Complete the words (based on images: ball, cat, kite, etc.) -->
+        <div class="card">
+            <div class="card-title">✏️ 8. Complete the words</div>
+            <div class="word-row" id="wordsContainer">
+                <!-- Words: _all (ball), c_t (cat), kite (kite), b_ke (bike), etc. Using emoji representation -->
+            </div>
+            <div id="wordFeedback" style="font-size:0.85rem; text-align:center; margin-top:10px;">💡 Type the missing letter(s) and click ✔️</div>
+        </div>
+
+        <!-- ACTIVITY 9 & 10: Listen and say your name + Ask and answer -->
+        <div class="card">
+            <div class="card-title">🗣️ 9. Say your name & 10. Ask & answer</div>
+            <div class="name-zone">
+                <div class="name-input-area">
+                    <input type="text" id="userName" class="name-field" placeholder="Your name (e.g., Amina)" value="Alex">
+                    <button id="speakNameBtn" class="speak-name-btn">🔊 Listen & say your name</button>
+                </div>
+                <div class="qa-bubble">
+                    <div id="qaDisplay">💬 "What's your name?" – "My name is ..."</div>
+                    <div class="qa-buttons">
+                        <button id="askQuestionBtn" class="speak-name-btn">❓ Ask "What's your name?"</button>
+                        <button id="answerNameBtn" class="speak-name-btn">✅ Answer with your name</button>
+                    </div>
+                </div>
+                <div id="qaFeedback" style="font-style:italic; background:#fff0d6; border-radius:30px; padding:6px;">👉 Practice with a friend: one asks, one answers!</div>
+            </div>
+        </div>
+
+        <!-- ACTIVITY 11: Listen, say and show the numbers -->
+        <div class="card">
+            <div class="card-title">🔢 11. Listen, say & show the numbers</div>
+            <div class="numbers-panel">
+                <div class="number-cards" id="numberCards">
+                    <!-- Numbers 1-10 dynamically -->
+                </div>
+                <div>
+                    <button id="randomNumberBtn" class="listen-number-btn">🎲 Listen to a random number → show it!</button>
+                    <button id="repeatNumberBtn" class="listen-number-btn">🔁 Repeat last number</button>
+                </div>
+                <div id="numberFeedback" style="margin-top: 10px; background:#fff0db; border-radius:40px; padding:8px; width:100%; text-align:center;">
+                    🎧 Listen and click the correct number card!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feedback-area">
+        <span>⭐ Interactive learning – based on pages 10-11 ⭐</span>
+        <button id="globalResetBtn" class="reset-btn">🔄 Reset all activities</button>
+    </div>
+    <footer>📘 Activity 8: Look, read, complete words & circle. 9: Listen and say your name. 10: Ask and answer. 11: Listen, say and show numbers.</footer>
+</div>
+
+<script>
+    // ********************* SPEECH HELPER *********************
+    function speakText(text, lang = 'en-US', rate = 0.85) {
+        if (!window.speechSynthesis) {
+            console.warn("Speech not supported");
+            return;
+        }
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = rate;
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // ********************* ACTIVITY 8: COMPLETE WORDS *********************
+    // Word list: based on typical vocabulary from primary (ball, cat, kite, bike, doll, car)
+    const wordsData = [
+        { word: "ball",  missingIndex: 0, hint: "_ all", image: "⚽", full: "ball", missingLetters: "b" },
+        { word: "cat",   missingIndex: 1, hint: "c _ t", image: "🐱", full: "cat", missingLetters: "a" },
+        { word: "kite",  missingIndex: 2, hint: "ki _ e", image: "🪁", full: "kite", missingLetters: "t" },
+        { word: "bike",  missingIndex: 1, hint: "b _ ke", image: "🚲", full: "bike", missingLetters: "i" },
+        { word: "doll",  missingIndex: 2, hint: "do _ l", image: "🎎", full: "doll", missingLetters: "l" },
+        { word: "car",   missingIndex: 1, hint: "c _ r", image: "🚗", full: "car", missingLetters: "a" }
+    ];
+
+    let wordStatus = []; // store user inputs and correct flags
+
+    function renderWordGame() {
+        const container = document.getElementById('wordsContainer');
+        container.innerHTML = '';
+        wordStatus = wordsData.map(w => ({ input: '', correct: false }));
+
+        wordsData.forEach((item, idx) => {
+            const wordDiv = document.createElement('div');
+            wordDiv.className = 'word-item';
+            wordDiv.innerHTML = `
+                <div class="word-image">${item.image}</div>
+                <div class="word-blank">${item.hint}</div>
+                <input type="text" maxlength="1" class="missing-input" id="input_${idx}" placeholder="?" value="${wordStatus[idx].input}" style="text-transform:lowercase">
+                <button class="check-word-btn" data-index="${idx}">✔️ Check</button>
+                <div id="wordMsg_${idx}" style="font-size:0.7rem; margin-top:5px;"></div>
+            `;
+            container.appendChild(wordDiv);
+            const inputField = wordDiv.querySelector('.missing-input');
+            inputField.addEventListener('input', (e) => {
+                wordStatus[idx].input = e.target.value.toLowerCase();
+            });
+            const checkBtn = wordDiv.querySelector('.check-word-btn');
+            checkBtn.addEventListener('click', () => {
+                const userLetter = wordStatus[idx].input.trim();
+                const correctLetter = item.missingLetters;
+                const msgDiv = document.getElementById(`wordMsg_${idx}`);
+                if (userLetter === correctLetter) {
+                    wordStatus[idx].correct = true;
+                    msgDiv.innerHTML = '✅ Correct!';
+                    msgDiv.style.color = '#2c6e2c';
+                    speakText(`Good! ${item.full}`, 'en-US', 0.8);
+                    // Optional: auto-fill the blank in hint display (visual)
+                    const hintSpan = wordDiv.querySelector('.word-blank');
+                    const correctHint = item.hint.replace('_', correctLetter);
+                    hintSpan.innerHTML = correctHint;
+                } else {
+                    wordStatus[idx].correct = false;
+                    msgDiv.innerHTML = `❌ Try again. The missing letter is "${correctLetter}".`;
+                    msgDiv.style.color = '#b34e4e';
+                    speakText(`The missing letter is ${correctLetter}. ${item.full}`, 'en-US', 0.8);
+                }
+            });
+        });
+    }
+
+    // ********************* ACTIVITY 9 & 10: Name & Q&A *********************
+    const userNameInput = document.getElementById('userName');
+    const speakNameBtn = document.getElementById('speakNameBtn');
+    const askQuestionBtn = document.getElementById('askQuestionBtn');
+    const answerNameBtn = document.getElementById('answerNameBtn');
+    const qaDisplay = document.getElementById('qaDisplay');
+    const qaFeedback = document.getElementById('qaFeedback');
+
+    speakNameBtn.addEventListener('click', () => {
+        let name = userNameInput.value.trim();
+        if (name === "") name = "friend";
+        speakText(`My name is ${name}`, 'en-US', 0.85);
+        qaDisplay.innerHTML = `💬 "My name is ${name}." – You said your name! 🎤`;
+        qaFeedback.innerHTML = `✨ Great! Now answer when someone asks "What's your name?"`;
+    });
+
+    askQuestionBtn.addEventListener('click', () => {
+        speakText("What's your name?", 'en-US', 0.85);
+        qaDisplay.innerHTML = `❓ "What's your name?" – Now you can answer!`;
+        qaFeedback.innerHTML = `🗣️ Listen to the question and answer: "My name is ${userNameInput.value.trim() || '...'}"`;
+    });
+
+    answerNameBtn.addEventListener('click', () => {
+        let name = userNameInput.value.trim();
+        if (name === "") name = "friend";
+        speakText(`My name is ${name}`, 'en-US', 0.85);
+        qaDisplay.innerHTML = `✅ "My name is ${name}." – Perfect answer!`;
+        qaFeedback.innerHTML = `🎉 Great! Practice with a friend: one asks, one answers.`;
+    });
+
+    // ********************* ACTIVITY 11: NUMBERS (LISTEN, SAY, SHOW) *********************
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let currentRandomNumber = null;
+    let lastSpokenNumber = null;
+    const numberContainer = document.getElementById('numberCards');
+    const randomBtn = document.getElementById('randomNumberBtn');
+    const repeatNumberBtn = document.getElementById('repeatNumberBtn');
+    const numberFeedbackSpan = document.getElementById('numberFeedback');
+
+    function renderNumbers() {
+        numberContainer.innerHTML = '';
+        numbers.forEach(num => {
+            const numCard = document.createElement('div');
+            numCard.className = 'num-card';
+            numCard.textContent = num;
+            numCard.setAttribute('data-number', num);
+            numCard.addEventListener('click', () => {
+                const clickedNum = parseInt(numCard.getAttribute('data-number'));
+                if (currentRandomNumber !== null && clickedNum === currentRandomNumber) {
+                    numberFeedbackSpan.innerHTML = `🎉 CORRECT! You showed ${clickedNum}. Great listening! +1 🎉`;
+                    speakText(`Excellent! You showed number ${clickedNum}.`, 'en-US', 0.9);
+                    // flash green
+                    numCard.style.backgroundColor = "#b5e3b5";
+                    setTimeout(() => numCard.style.backgroundColor = "#ffefdb", 300);
+                    currentRandomNumber = null; // reset for next random
+                } else if (currentRandomNumber !== null) {
+                    numberFeedbackSpan.innerHTML = `❌ Not that! The number was ${currentRandomNumber}. Try again!`;
+                    speakText(`No, the number was ${currentRandomNumber}.`, 'en-US', 0.85);
+                    numCard.style.backgroundColor = "#ffc9c9";
+                    setTimeout(() => numCard.style.backgroundColor = "#ffefdb", 300);
+                } else {
+                    // just show the number
+                    speakText(`Number ${clickedNum}`, 'en-US', 0.8);
+                    numberFeedbackSpan.innerHTML = `🔢 You showed ${clickedNum}. Say it loud!`;
+                }
+            });
+            numberContainer.appendChild(numCard);
+        });
+    }
+
+    function speakRandomNumber() {
+        const randomIndex = Math.floor(Math.random() * numbers.length);
+        const randNum = numbers[randomIndex];
+        currentRandomNumber = randNum;
+        lastSpokenNumber = randNum;
+        speakText(`Number ${randNum}. Show me ${randNum}!`, 'en-US', 0.85);
+        numberFeedbackSpan.innerHTML = `🔊 Listening... Click on the number card: ${randNum} ? Tap the correct number!`;
+    }
+
+    randomBtn.addEventListener('click', () => {
+        speakRandomNumber();
+    });
+
+    repeatNumberBtn.addEventListener('click', () => {
+        if (lastSpokenNumber !== null) {
+            speakText(`Repeat: number ${lastSpokenNumber}`, 'en-US', 0.85);
+            numberFeedbackSpan.innerHTML = `🔁 Repeating: Show ${lastSpokenNumber} if you haven't yet.`;
+            currentRandomNumber = lastSpokenNumber; // reactivate challenge
+        } else {
+            numberFeedbackSpan.innerHTML = `👉 Press "Listen to random number" first!`;
+            speakText(`Press the random number button first.`, 'en-US');
+        }
+    });
+
+    // Bonus: additional "say and show" - all number cards also speak when clicked without random challenge.
+    // Already implemented.
+
+    // ********************* GLOBAL RESET *********************
+    function globalReset() {
+        // Reset word completion
+        renderWordGame();
+        // Reset name
+        userNameInput.value = "Alex";
+        qaDisplay.innerHTML = "💬 'What's your name?' – 'My name is ...'";
+        qaFeedback.innerHTML = "👉 Practice with a friend: one asks, one answers!";
+        // Reset numbers
+        currentRandomNumber = null;
+        lastSpokenNumber = null;
+        numberFeedbackSpan.innerHTML = "🎧 Listen and click the correct number card!";
+        // cancel any speech
+        window.speechSynthesis.cancel();
+        speakText("Reset complete. Let's practice pages 10 and 11!", 'en-US', 0.85);
+    }
+
+    const resetBtn = document.getElementById('globalResetBtn');
+    resetBtn.addEventListener('click', globalReset);
+
+    // Additional interactive: "Circle the right box" concept (activity 8 mention). We add extra: after completing word, highlight.
+    // Not mandatory but we add a fun feature: word completion celebration when all words correct? optional.
+    function checkAllWordsCompleted() {
+        if (wordStatus.every(w => w.correct === true)) {
+            const wordFeedbackDiv = document.getElementById('wordFeedback');
+            wordFeedbackDiv.innerHTML = "🌟 AMAZING! You completed all words! 🌟 Circle the right box in your copybook!";
+            speakText("Excellent! All words completed.", 'en-US');
+        }
+    }
+    // Override the word check mechanism to call this
+    const originalRender = renderWordGame;
+    window.renderWordGame = renderWordGame;
+    renderWordGame();
+    // patch each button in dynamic content to also call checkAllWordsCompleted after each correct
+    function attachGlobalCompletionListener() {
+        // we'll use a mutation observer or simply patch after each render. Since renderWordGame recreates, we add after each render.
+        const afterRender = () => {
+            const buttons = document.querySelectorAll('.check-word-btn');
+            buttons.forEach(btn => {
+                const oldClick = btn.onclick;
+                btn.addEventListener('click', () => {
+                    setTimeout(() => {
+                        if (wordStatus.length && wordStatus.every(w => w.correct)) {
+                            const wordFeedbackDiv = document.getElementById('wordFeedback');
+                            wordFeedbackDiv.innerHTML = "🌟 PERFECT! All words complete! 🌟 Great job!";
+                            speakText("You completed all the words! Well done.", 'en-US');
+                        } else {
+                            // update message
+                            const completedCount = wordStatus.filter(w => w.correct).length;
+                            if (completedCount === wordsData.length) {
+                                // same
+                            } else {
+                                document.getElementById('wordFeedback').innerHTML = `✅ Completed ${completedCount}/${wordsData.length} words. Keep going!`;
+                            }
+                        }
+                    }, 100);
+                });
+            });
+        };
+        setTimeout(afterRender, 50);
+    }
+    // override renderWordGame to also attach listener
+    const superRender = renderWordGame;
+    window.renderWordGame = function() {
+        superRender();
+        attachGlobalCompletionListener();
+    };
+    renderWordGame();
+    attachGlobalCompletionListener();
+
+    // Also add a little for self-intro: encourage "Listen and say your name" as in activity 9
+    const nameHelper = document.createElement('div');
+    nameHelper.style.marginTop = '10px';
+    nameHelper.style.fontSize = '0.8rem';
+    nameHelper.style.background = '#f9e5c1';
+    nameHelper.style.borderRadius = '30px';
+    nameHelper.style.padding = '5px';
+    nameHelper.innerHTML = '💡 Activity 9: Click "Listen & say your name" then repeat aloud.';
+    document.querySelector('.name-zone').appendChild(nameHelper);
+
+    // Additional small feature for activity 10: random partner chat simulation
+    const simulatePartnerBtn = document.createElement('button');
+    simulatePartnerBtn.textContent = "👥 Simulate friend (Ask & Answer)";
+    simulatePartnerBtn.className = "speak-name-btn";
+    simulatePartnerBtn.style.marginTop = "8px";
+    document.querySelector('.qa-buttons').appendChild(simulatePartnerBtn);
+    simulatePartnerBtn.addEventListener('click', () => {
+        let name = userNameInput.value.trim() || "friend";
+        speakText(`What's your name?`, 'en-US', 0.85);
+        setTimeout(() => {
+            speakText(`My name is ${name}. Nice to meet you!`, 'en-US', 0.85);
+            qaDisplay.innerHTML = `👥 Friend asked: "What's your name?" → You answered: "${name}". Perfect dialogue!`;
+        }, 1300);
+        qaFeedback.innerHTML = `🎭 Role-play: you answered correctly! Now switch roles.`;
+    });
+
+    // Final touches for numbers: additional instruction "say and show the numbers"
+    const numbersInstruction = document.createElement('div');
+    numbersInstruction.style.fontSize = '0.75rem';
+    numbersInstruction.style.marginTop = '12px';
+    numbersInstruction.style.textAlign = 'center';
+    numbersInstruction.innerHTML = '✨ To "show the number", click on the digit card after hearing it! ✨';
+    document.querySelector('.numbers-panel').appendChild(numbersInstruction);
+    
+    // preload render numbers
+    renderNumbers();
+    
+    // Add a quick tutorial for "Circle the right box" for activity 8: we can add a checkbox simulation
+    const circleNote = document.createElement('div');
+    circleNote.style.marginTop = '12px';
+    circleNote.style.fontSize = '0.75rem';
+    circleNote.style.backgroundColor = '#fff0da';
+    circleNote.style.borderRadius = '30px';
+    circleNote.style.padding = '6px';
+    circleNote.innerHTML = '📌 In your copybook: after completing each word, circle the right box (✓). Keep practising!';
+    document.querySelector('#wordsContainer').parentNode.appendChild(circleNote);
+    
+    // For better UX: prevent speech interruptions and keep friendly
+    window.addEventListener('load', () => {
+        speakText("Welcome to pages 10 and 11! Complete words, say your name, ask and answer, and show numbers.", 'en-US', 0.9);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>📘 English Unit: Pages 41–50 | Phonics · My Pets · Listen & Circle · Story · Act Out</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(145deg, #fcf8ef 0%, #f3ead9 100%);
+            font-family: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI Emoji', cursive, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .game-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #fffef7;
+            border-radius: 70px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
+            padding: 20px 28px 35px;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 5px dotted #ffb347;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2rem;
+            margin: 0;
+            background: linear-gradient(135deg, #5a6e4a, #2c5e3f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 10px 0;
+        }
+        .badge {
+            background: #ffddb0;
+            padding: 5px 18px;
+            border-radius: 60px;
+            font-weight: bold;
+            color: #aa5c1c;
+            font-size: 0.75rem;
+        }
+        .grid-2col {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 25px 0;
+        }
+        .card {
+            flex: 1;
+            min-width: 320px;
+            background: #fffaf2;
+            border-radius: 55px;
+            padding: 18px 20px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+            border: 2px solid #ffe0b5;
+        }
+        .card-title {
+            background: #ffcf95;
+            display: inline-block;
+            padding: 6px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+        }
+        button, .phonic-card, .pet-card, .story-role {
+            cursor: pointer;
+            transition: 0.05s linear;
+            font-family: inherit;
+        }
+        .listen-btn {
+            background: #ffe3b9;
+            border: none;
+            border-radius: 40px;
+            padding: 6px 16px;
+            font-weight: bold;
+            margin: 5px;
+            box-shadow: 0 3px 0 #c28a4a;
+        }
+        .listen-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #c28a4a; }
+        .phonic-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .phonic-card {
+            background: #ffe8d0;
+            border-radius: 60px;
+            padding: 12px 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        .pet-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .pet-card {
+            background: #fff3e6;
+            border-radius: 50px;
+            padding: 10px 18px;
+            font-weight: bold;
+        }
+        .story-scene {
+            background: #fdf5e6;
+            border-radius: 50px;
+            padding: 12px;
+            margin: 12px 0;
+            border-left: 8px solid #ffb347;
+        }
+        .role-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 12px 0;
+        }
+        .feedback-area {
+            background: #ffefdb;
+            border-radius: 60px;
+            padding: 12px 20px;
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .reset-btn {
+            background: #ffa559;
+            border: none;
+            padding: 8px 25px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #a57c52;
+            margin-top: 20px;
+        }
+        .tick-word {
+            background: #fff0e0;
+            border-radius: 50px;
+            padding: 6px 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 4px;
+        }
+        .tick-box-small {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 2px solid #ffb058;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        @media (max-width: 750px) {
+            .phonic-card { font-size: 1rem; padding: 8px 12px; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="game-wrapper">
+    <div class="header">
+        <h1>📘 Pages 41–50 · Phonics (C,A,D,E,G) · My Pets · Listen & Circle · Story · Act Out · Phonics (O,Q,F,S)</h1>
+        <div class="badge-row">
+            <span class="badge">🔤 p.42 Phonics c,a,d,e,g</span>
+            <span class="badge">🐾 p.45-47 My Pets · Story</span>
+            <span class="badge">🎭 p.47 Act out scene</span>
+            <span class="badge">🔤 p.49 Phonics o,q,f,s</span>
+        </div>
+    </div>
+
+    <div class="grid-2col">
+        <!-- LEFT COLUMN: Phonics p.41-42 + Pets p.45-46 -->
+        <div class="card">
+            <div class="card-title">🔊 p.41-42 · Phonics: C, A, D, E, G + Listen & circle</div>
+            <div class="phonic-grid" id="phonicsCADEG">
+                <div class="phonic-card" data-letter="c">🐱 Cc /k/</div>
+                <div class="phonic-card" data-letter="a">🍎 Aa /æ/</div>
+                <div class="phonic-card" data-letter="d">🐶 Dd /d/</div>
+                <div class="phonic-card" data-letter="e">🥚 Ee /e/</div>
+                <div class="phonic-card" data-letter="g">🎁 Gg /g/</div>
+            </div>
+            <div id="phonicsCADEGFeedback" style="background:#fff0db; border-radius:30px; padding:6px; margin:8px 0;">🔊 Click a letter to hear its sound. Trace with your finger in the air!</div>
+            
+            <div class="card-title" style="margin-top: 20px;">👂 Listen & circle the letter (p.41 activity 2)</div>
+            <div id="circleLetterGame">
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin: 10px 0;">
+                    <button id="playRandomCADEG" class="listen-btn">🎲 Listen & circle the letter</button>
+                    <div id="circleOptions" style="display: flex; gap: 12px;"></div>
+                </div>
+                <div id="circleFeedback" style="font-size:0.8rem;">💡 Listen to the sound, then click the correct letter to circle it!</div>
+            </div>
+
+            <div class="card-title" style="margin-top: 20px;">🐾 p.45-46 · My Pets: complete sentences & listen</div>
+            <div id="petsArea">
+                <div class="pet-grid">
+                    <div class="pet-card" data-pet="canary">🐦 canary</div>
+                    <div class="pet-card" data-pet="goldfish">🐠 goldfish</div>
+                    <div class="pet-card" data-pet="rabbit">🐇 rabbit</div>
+                    <div class="pet-card" data-pet="cat">🐱 cat</div>
+                    <div class="pet-card" data-pet="fennec">🦊 fennec</div>
+                </div>
+                <div id="sentenceCompletion">
+                    <p><strong>📝 Complete in copybook:</strong></p>
+                    <div>A canary has got a short ___ . <button id="completeBill" class="listen-btn">bill</button></div>
+                    <div>A rabbit has got a short ___ . <button id="completeTail" class="listen-btn">tail</button></div>
+                    <div>A cat has got a long ___ . <button id="completeCatTail" class="listen-btn">tail</button></div>
+                    <div>A goldfish is ___ . <button id="completeSmall" class="listen-btn">small</button></div>
+                </div>
+                <button id="listenPetSentences" class="listen-btn">🔊 Listen to pet sentences</button>
+                <div id="petFeedback" style="margin-top:8px;">💬 "A canary has got a short bill. A rabbit has got a short tail..."</div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Story p.46-47 + Act Out + Phonics O,Q,F,S p.48-49 -->
+        <div class="card">
+            <div class="card-title">🎭 p.46-47 · Story: Kamel, Katia & Robotkid</div>
+            <div class="story-scene" id="petStory">
+                <strong>🌟 Scene 1:</strong> Kamel: "I have a snake!" Katia: "Oh! I have a canary."<br>
+                <strong>🌟 Scene 2:</strong> Robotkid: "I have a big dog!" Katia: "My canary has yellow fins?" No, canary has feathers!<br>
+                <strong>🌟 Scene 3:</strong> Fennec: long tail and big ears. "The fennec is cute!"<br>
+                <strong>🎭 Scene 4:</strong> Katia: "Have you got a pet?" Robotkid: "Yes, my robot-dog!"
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button id="listenPetStory" class="listen-btn">🔊 Listen to full story</button>
+                <button id="listenScene4" class="listen-btn">🎭 Listen to Scene 4</button>
+            </div>
+            
+            <div class="card-title" style="margin-top: 20px;">🎭 Act out (p.47) · Choose a role</div>
+            <div class="role-buttons">
+                <button class="story-role" data-role="Kamel">🐍 Kamel</button>
+                <button class="story-role" data-role="Katia">🐦 Katia</button>
+                <button class="story-role" data-role="Robotkid">🤖 Robotkid</button>
+                <button class="story-role" data-role="Fennec">🦊 Fennec</button>
+            </div>
+            <div id="actOutFeedback" style="background:#fff0db; border-radius:30px; padding:6px;">💬 Click a role to say your line. Act with a friend!</div>
+
+            <div class="card-title" style="margin-top: 20px;">🔤 p.49 · Phonics: O, Q, F, S + Copybook</div>
+            <div class="phonic-grid" id="phonicsOQFS">
+                <div class="phonic-card" data-letter2="o">🦉 Oo /ɒ/</div>
+                <div class="phonic-card" data-letter2="q">👑 Qq /kw/</div>
+                <div class="phonic-card" data-letter2="f">🐟 Ff /f/</div>
+                <div class="phonic-card" data-letter2="s">🐍 Ss /s/</div>
+            </div>
+            <div id="phonicsOQFSFeedback" style="background:#fff0db; border-radius:30px; padding:6px; margin:8px 0;">🔊 Click to hear sounds. Trace letters on the table!</div>
+            
+            <div class="card-title" style="margin-top: 10px;">📖 p.48 · Tongue twister: "A fox out of a box..."</div>
+            <button id="tongueTwisterBtn" class="listen-btn">🦊 Listen to twister: A fox stops two frogs</button>
+            <div id="twisterMsg" style="font-size:0.8rem; margin-top:5px;">✨ "A fox out of a box. He stops two frogs from eating two hot dogs on top of the rocks."</div>
+        </div>
+    </div>
+
+    <div class="feedback-area">
+        <span>⭐ Pages 41-50: Phonics (C,A,D,E,G) · Pets vocabulary · Story · Act out · Phonics (O,Q,F,S) ⭐</span>
+        <button id="globalResetBtn" class="reset-btn">🔄 Reset All Activities</button>
+    </div>
+    <footer>📘 Based on pages 41-50: sound letters, listen & circle, My Pets, complete sentences, story & act out, tongue twister.</footer>
+</div>
+
+<script>
+    // ========== SPEECH ==========
+    function speakText(text, rate = 0.85) {
+        if (!window.speechSynthesis) return;
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = rate;
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // ---------- 1. PHONICS C, A, D, E, G (p.42) ----------
+    const phonicsSounds = {
+        c: "C says /k/ like cat", a: "A says /æ/ like apple", d: "D says /d/ like dog",
+        e: "E says /e/ like egg", g: "G says /g/ like goat"
+    };
+    document.querySelectorAll('#phonicsCADEG .phonic-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const letter = card.getAttribute('data-letter');
+            speakText(phonicsSounds[letter], 0.8);
+            document.getElementById('phonicsCADEGFeedback').innerHTML = `🔊 ${phonicsSounds[letter]}`;
+        });
+    });
+
+    // Listen & circle game (p.41 activity 2)
+    const lettersList = ['c', 'a', 'd', 'e', 'g'];
+    let currentCircleLetter = null;
+    const optionsDiv = document.getElementById('circleOptions');
+    function renderCircleOptions() {
+        optionsDiv.innerHTML = '';
+        lettersList.forEach(letter => {
+            const btn = document.createElement('button');
+            btn.textContent = letter.toUpperCase();
+            btn.className = 'listen-btn';
+            btn.style.margin = '0 4px';
+            btn.addEventListener('click', () => {
+                if (currentCircleLetter === letter) {
+                    document.getElementById('circleFeedback').innerHTML = `✅ Correct! You circled ${letter.toUpperCase()}. Great listening!`;
+                    speakText(`Correct! ${letter.toUpperCase()}`, 0.8);
+                    currentCircleLetter = null;
+                } else if (currentCircleLetter) {
+                    document.getElementById('circleFeedback').innerHTML = `❌ Not that. The sound was for letter ${currentCircleLetter.toUpperCase()}. Try again!`;
+                    speakText(`No, the letter is ${currentCircleLetter.toUpperCase()}`, 0.7);
+                } else {
+                    document.getElementById('circleFeedback').innerHTML = `🔘 Press "Listen & circle" first!`;
+                }
+            });
+            optionsDiv.appendChild(btn);
+        });
+    }
+    renderCircleOptions();
+    document.getElementById('playRandomCADEG').onclick = () => {
+        const rand = lettersList[Math.floor(Math.random() * lettersList.length)];
+        currentCircleLetter = rand;
+        speakText(phonicsSounds[rand], 0.8);
+        document.getElementById('circleFeedback').innerHTML = `🔊 Listen: Which letter did you hear? Click on the correct letter to circle it!`;
+    };
+
+    // ---------- 2. MY PETS (p.45-46) ----------
+    document.querySelectorAll('.pet-card').forEach(pet => {
+        pet.addEventListener('click', () => {
+            const petName = pet.getAttribute('data-pet');
+            speakText(`${petName}`, 0.8);
+            document.getElementById('petFeedback').innerHTML = `🐾 ${petName} — say it aloud!`;
+        });
+    });
+    document.getElementById('completeBill').onclick = () => { speakText(`bill. A canary has got a short bill.`, 0.8); document.getElementById('petFeedback').innerHTML = `✅ A canary has got a short bill. Write it in copybook!`; };
+    document.getElementById('completeTail').onclick = () => { speakText(`tail. A rabbit has got a short tail.`, 0.8); document.getElementById('petFeedback').innerHTML = `✅ A rabbit has got a short tail.`; };
+    document.getElementById('completeCatTail').onclick = () => { speakText(`tail. A cat has got a long tail.`, 0.8); document.getElementById('petFeedback').innerHTML = `✅ A cat has got a long tail.`; };
+    document.getElementById('completeSmall').onclick = () => { speakText(`small. A goldfish is small.`, 0.8); document.getElementById('petFeedback').innerHTML = `🐠 A goldfish is small.`; };
+    document.getElementById('listenPetSentences').onclick = () => { speakText(`A canary has got a short bill. A rabbit has got a short tail. A cat has got a long tail. A goldfish is small.`, 0.85); };
+
+    // ---------- 3. STORY & ACT OUT (p.46-47) ----------
+    const fullPetStory = `Kamel says I have a snake. Katia says I have a canary. Robotkid says I have a big dog. Katia says my canary has yellow fins? No, canary has feathers! The fennec has a long tail and big ears. Katia asks: Have you got a pet? Robotkid answers: Yes, my robot-dog.`;
+    const scene4Text = `Katia: Have you got a pet? Robotkid: Yes, my robot-dog!`;
+    document.getElementById('listenPetStory').onclick = () => speakText(fullPetStory, 0.85);
+    document.getElementById('listenScene4').onclick = () => speakText(scene4Text, 0.85);
+    
+    const roleLines = {
+        Kamel: "I have a snake!",
+        Katia: "I have a canary! Have you got a pet?",
+        Robotkid: "I have a big dog! Yes, my robot-dog.",
+        Fennec: "I have a long tail and big ears! I am cute."
+    };
+    document.querySelectorAll('.story-role').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const role = btn.getAttribute('data-role');
+            speakText(roleLines[role], 0.85);
+            document.getElementById('actOutFeedback').innerHTML = `🎭 You are ${role}: "${roleLines[role]}" — Now act with your friends!`;
+        });
+    });
+
+    // ---------- 4. PHONICS O, Q, F, S (p.49) ----------
+    const phonicsSounds2 = {
+        o: "O says /ɒ/ like octopus", q: "Q says /kw/ like queen", f: "F says /f/ like fish", s: "S says /s/ like snake"
+    };
+    document.querySelectorAll('#phonicsOQFS .phonic-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const letter = card.getAttribute('data-letter2');
+            speakText(phonicsSounds2[letter], 0.8);
+            document.getElementById('phonicsOQFSFeedback').innerHTML = `🔊 ${phonicsSounds2[letter]}`;
+        });
+    });
+
+    // ---------- 5. TONGUE TWISTER (p.48) ----------
+    document.getElementById('tongueTwisterBtn').onclick = () => {
+        speakText("A fox out of a box. He stops two frogs from eating two hot dogs on top of the rocks.", 0.8);
+        document.getElementById('twisterMsg').innerHTML = "🦊 'A fox out of a box...' Say it fast with friends!";
+    };
+
+    // ---------- BONUS: p.43-44 extra (Unit 4-5 transition) quick listen & repeat ----------
+    const extraRepeatDiv = document.createElement('div');
+    extraRepeatDiv.style.marginTop = "20px";
+    extraRepeatDiv.innerHTML = `<div class="card-title" style="font-size:1rem;">🎤 p.43-44 · Listen and repeat (extra)</div>
+        <button id="extraRepeatBtn" class="listen-btn">🔊 Repeat: cat, dog, fish, bird</button>
+        <div id="extraMsg">✨ Practice pronunciation with a friend!</div>`;
+    document.querySelector('.card:first-child').appendChild(extraRepeatDiv);
+    document.getElementById('extraRepeatBtn').onclick = () => { speakText("cat, dog, fish, bird", 0.8); document.getElementById('extraMsg').innerHTML = "🐱🐶🐟🐦 Repeat each word!"; };
+
+    // ---------- GLOBAL RESET ----------
+    function globalReset() {
+        window.speechSynthesis.cancel();
+        currentCircleLetter = null;
+        document.getElementById('circleFeedback').innerHTML = "💡 Listen to the sound, then click the correct letter to circle it!";
+        document.getElementById('phonicsCADEGFeedback').innerHTML = "🔊 Click a letter to hear its sound. Trace with your finger!";
+        document.getElementById('phonicsOQFSFeedback').innerHTML = "🔊 Click to hear sounds. Trace letters on the table!";
+        document.getElementById('petFeedback').innerHTML = "💬 'A canary has got a short bill. A rabbit has got a short tail...'";
+        document.getElementById('actOutFeedback').innerHTML = "💬 Click a role to say your line. Act with a friend!";
+        document.getElementById('twisterMsg').innerHTML = "✨ 'A fox out of a box...'";
+        document.getElementById('extraMsg').innerHTML = "✨ Practice pronunciation with a friend!";
+        speakText("All activities reset. Pages 41 to 50 ready!", 0.85);
+    }
+    document.getElementById('globalResetBtn').addEventListener('click', globalReset);
+
+    // Welcome intro
+    window.addEventListener('load', () => {
+        speakText("Welcome to pages 41 to 50! Learn phonics C A D E G, My Pets, story, act out, and phonics O Q F S.", 0.9);
+    });
+</script>
+</body>
+</html>
