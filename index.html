@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>📚 كتاب الإنجليزية - السنة الثالثة ابتدائي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ====== الأساسيات ====== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fcf8ef 0%, #f3ead9 100%);
+            font-family: 'Comic Neue', 'Segoe UI', 'Tahoma', 'Traditional Arabic', cursive, sans-serif;
+            min-height: 100vh;
+            padding: 16px;
+        }
+
+        .app {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #fffef7;
+            border-radius: 70px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.10);
+            padding: 24px 28px 30px;
+            border: 3px solid #ffd966;
+        }
+
+        /* ====== الهيدر ====== */
+        .header {
+            text-align: center;
+            border-bottom: 5px dotted #ffb347;
+            padding-bottom: 14px;
+            margin-bottom: 22px;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #4a6e4a, #2c5e3f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #aa5c1c;
+            font-weight: bold;
+            margin-top: 4px;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .badge {
+            background: #ffddb0;
+            padding: 6px 20px;
+            border-radius: 60px;
+            font-weight: bold;
+            color: #aa5c1c;
+            font-size: 0.75rem;
+            box-shadow: inset 0 0 0 1px #ffe1b0;
+        }
+
+        /* ====== شريط التنقل ====== */
+        .nav-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 60px;
+            background: #ffddb0;
+            color: #5a3a1a;
+            font-weight: bold;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            box-shadow: 0 4px 0 #c28a4a;
+            font-family: inherit;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #c28a4a;
+            background: #ffdbb5;
+        }
+
+        .nav-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #c28a4a;
+        }
+
+        .nav-btn.active {
+            background: #ffa559;
+            color: #fff;
+            box-shadow: 0 4px 0 #b86d2a;
+        }
+
+        /* ====== حاوية المحتوى ====== */
+        .tab-container {
+            background: #fffaf2;
+            border-radius: 50px;
+            padding: 18px 20px 22px;
+            border: 2px solid #ffe0b5;
+            min-height: 500px;
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0.4; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .game-frame {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 30px;
+            background: #fffef7;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        /* ====== التذييل ====== */
+        .footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #a57c52;
+            margin-top: 22px;
+            border-top: 2px dashed #ffdbb5;
+            padding-top: 16px;
+        }
+
+        /* ====== استجابة للشاشات الصغيرة ====== */
+        @media (max-width: 768px) {
+            .app { padding: 16px; border-radius: 40px; }
+            .header h1 { font-size: 1.5rem; }
+            .nav-btn { padding: 8px 12px; font-size: 0.7rem; }
+            .game-frame { height: 520px; }
+            .tab-container { padding: 12px; }
+        }
+
+        @media (max-width: 480px) {
+            .game-frame { height: 440px; }
+            .header h1 { font-size: 1.2rem; }
+            .badge { font-size: 0.6rem; padding: 4px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app">
+
+    <!-- الهيدر -->
+    <header class="header">
+        <h1>📚 كتاب اللغة الإنجليزية - السنة الثالثة ابتدائي</h1>
+        <p>🎯 اختر الدرس الذي تريد مراجعته: ألعاب تفاعلية وأنشطة مسلية!</p>
+        <div class="badge-row">
+            <span class="badge">🔤 الحروف والأصوات</span>
+            <span class="badge">🐾 الحيوانات الأليفة</span>
+            <span class="badge">🎂 أعياد الميلاد</span>
+            <span class="badge">🏠 المنزل والأسرة</span>
+        </div>
+    </header>
+
+    <!-- شريط التنقل -->
+    <nav class="nav-bar" id="navBar">
+        <button class="nav-btn active" data-tab="tab02">📖 ص 6-7</button>
+        <button class="nav-btn" data-tab="tab03">🎧 ص 7</button>
+        <button class="nav-btn" data-tab="tab04">🎨 ص 8</button>
+        <button class="nav-btn" data-tab="tab05">📝 ص 10-11</button>
+        <button class="nav-btn" data-tab="tab06">📝 ص 10-11 (ب)</button>
+        <button class="nav-btn" data-tab="tab07">🎭 ص 12-13</button>
+        <button class="nav-btn" data-tab="tab08">🖇️ ص 14-15</button>
+        <button class="nav-btn" data-tab="tab09">🔢 ص 12-13</button>
+        <button class="nav-btn" data-tab="tab10">📘 ص 14-20</button>
+        <button class="nav-btn" data-tab="tab11">📖 ص 21-30</button>
+        <button class="nav-btn" data-tab="tab12">🏠 ص 31-40</button>
+        <button class="nav-btn" data-tab="tab13">🔤 ص 41-50</button>
+        <button class="nav-btn" data-tab="tab14">🎂 ص 51-61</button>
+    </nav>
+
+    <!-- المحتوى -->
+    <div class="tab-container">
+
+        <!-- التبويب 02 -->
+        <div id="tab02" class="tab-pane active">
+            <iframe src="02.html" class="game-frame" title="صفحة 6-7"></iframe>
+        </div>
+
+        <!-- التبويب 03 -->
+        <div id="tab03" class="tab-pane">
+            <iframe src="03.html" class="game-frame" title="صفحة 7"></iframe>
+        </div>
+
+        <!-- التبويب 04 -->
+        <div id="tab04" class="tab-pane">
+            <iframe src="04.html" class="game-frame" title="صفحة 8"></iframe>
+        </div>
+
+        <!-- التبويب 05 -->
+        <div id="tab05" class="tab-pane">
+            <iframe src="05.html" class="game-frame" title="صفحة 10-11"></iframe>
+        </div>
+
+        <!-- التبويب 06 -->
+        <div id="tab06" class="tab-pane">
+            <iframe src="06.html" class="game-frame" title="صفحة 10-11 (ب)"></iframe>
+        </div>
+
+        <!-- التبويب 07 -->
+        <div id="tab07" class="tab-pane">
+            <iframe src="07.html" class="game-frame" title="صفحة 12-13"></iframe>
+        </div>
+
+        <!-- التبويب 08 -->
+        <div id="tab08" class="tab-pane">
+            <iframe src="08.html" class="game-frame" title="صفحة 14-15"></iframe>
+        </div>
+
+        <!-- التبويب 09 -->
+        <div id="tab09" class="tab-pane">
+            <iframe src="09.html" class="game-frame" title="صفحة 12-13"></iframe>
+        </div>
+
+        <!-- التبويب 10 -->
+        <div id="tab10" class="tab-pane">
+            <iframe src="10.html" class="game-frame" title="صفحة 14-20"></iframe>
+        </div>
+
+        <!-- التبويب 11 -->
+        <div id="tab11" class="tab-pane">
+            <iframe src="11.html" class="game-frame" title="صفحة 21-30"></iframe>
+        </div>
+
+        <!-- التبويب 12 -->
+        <div id="tab12" class="tab-pane">
+            <iframe src="12.html" class="game-frame" title="صفحة 31-40"></iframe>
+        </div>
+
+        <!-- التبويب 13 -->
+        <div id="tab13" class="tab-pane">
+            <iframe src="13.html" class="game-frame" title="صفحة 41-50"></iframe>
+        </div>
+
+        <!-- التبويب 14 -->
+        <div id="tab14" class="tab-pane">
+            <iframe src="14.html" class="game-frame" title="صفحة 51-61"></iframe>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        📘 مستوحى من كتاب اللغة الإنجليزية للسنة الثالثة ابتدائي | أنشطة تفاعلية للأطفال
+        <br />
+        <span style="font-size:0.65rem; opacity:0.7;">جميع الحقوق محفوظة © 2026</span>
+    </footer>
+
+</div>
+
+<!-- ====== جافا سكريبت ====== -->
+<script>
+    (function() {
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        // دالة للتبديل بين التبويبات
+        function switchTab(tabId) {
+            // إخفاء كل التبويبات
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+
+            // إظهار التبويب المطلوب
+            const targetPane = document.getElementById(tabId);
+            if (targetPane) targetPane.classList.add('active');
+
+            // تحديث حالة الأزرار
+            navBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-tab') === tabId) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // إضافة مستمعات للأزرار
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const tabId = this.getAttribute('data-tab');
+                if (tabId) switchTab(tabId);
+            });
+        });
+
+        // حفظ التبويب النشط في localStorage
+        const savedTab = localStorage.getItem('activeTab');
+        if (savedTab && document.getElementById(savedTab)) {
+            switchTab(savedTab);
+        }
+
+        // حفظ التبويب النشط عند التبديل
+        const originalSwitch = switchTab;
+        window.switchTab = function(tabId) {
+            originalSwitch(tabId);
+            localStorage.setItem('activeTab', tabId);
+        };
+
+        // ربط الدالة الجديدة بالأزرار
+        navBtns.forEach(btn => {
+            btn.removeEventListener('click', switchTab);
+            btn.addEventListener('click', function(e) {
+                const tabId = this.getAttribute('data-tab');
+                if (tabId) window.switchTab(tabId);
+            });
+        });
+
+        console.log('✅ التبويبات جاهزة! عدد الألعاب: ' + tabPanes.length);
+    })();
+</script>
+
+</body>
+</html>
